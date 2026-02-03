@@ -1,6 +1,6 @@
 <?php
-const ROOT = __DIR__ ;
-//define('ROOT', __DIR__); > ancienne maniere de definir une constante sur PHP
+//const ROOT = __DIR__ ;
+define('ROOT', __DIR__); //> ancienne maniere de definir une constante sur PHP
 
 // Connexion à la BDD + retourner $pdo afin de la reutiliser dans mes pages livres
 require_once(ROOT . '/source/bdd/connexion_bdd.php');

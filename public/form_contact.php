@@ -1,3 +1,4 @@
 <?php
-// a relier au fichier html: formulaire_contact.html
+require_once(__DIR__ . '/../config.php');
+
 

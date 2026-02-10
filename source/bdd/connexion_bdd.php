@@ -1,10 +1,10 @@
 <?php
 
-$host = '127.0.0.1';  // 127.0.0.1 force TCP/IP
-$port = 8889;         // Vous changez pour 3306 car vous etes sur windows
+$host = '127.0.0.1';          // 127.0.0.1 force TCP/IP
+$port = 8889;                 // Vous changez pour 3306 car vous etes sur windows
 $dbname = 'campus_bien_etre';
 $user = 'root';
-$pass = 'root';           // WAMP vide par défaut, MAMP "root" donc vous laissez vide
+$pass = 'root';               // WAMP vide par défaut, MAMP "root" donc vous laissez vide
 
 try {
     $bdd = new PDO(

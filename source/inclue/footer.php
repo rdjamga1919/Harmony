@@ -11,9 +11,10 @@ require_once(__DIR__ . '/../../config.php');?>
 </head>
 <body>
 <!-- FOOTER -->
-<footer class="bg-dark text-white py-4 mt-5">
+<footer class="text-white py-4 mt-5"
+        style="background-color: #c9a0a0;">
     <div class="container text-center">
-        <p class="mb-2 fs-5">© 2025 – Tous droits réservés Rosie Djmaga - Anaïs Kriegel--Grapain</p>
+        <p class="mb-2 fs-5">© 2025 – Tous droits réservés Rosie Djmaga - Anaïs Kriegel--Grapain - Onesime Ngakosso-Ibara - Jordan Homere</p>
 
     </div>
 </footer>
@@ -21,3 +22,4 @@ require_once(__DIR__ . '/../../config.php');?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+

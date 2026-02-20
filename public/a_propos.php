@@ -12,17 +12,7 @@ require_once(__DIR__ . '/../config.php');
 </head>
 <body>
 <?php include '../source/inclue/header.php'?>
-<!-- Navigation -->
-<nav>
-    <a href="#" class="nav-logo">Campus <span>&</span> Bien-être</a>
-    <ul class="nav-links">
-        <li><a href="#">Forum</a></li>
-        <li><a href="#" class="active">À propos</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
-</nav>
 
-<!-- Hero -->
 <header class="hero">
     <div class="hero-text">
         <p class="hero-eyebrow">✦ Notre histoire</p>

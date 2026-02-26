@@ -22,6 +22,7 @@ require_once(__DIR__ . '/../config.php');
 
     <input type="submit" value="Se connecter">
 </form>
+
 <?php include '../source/inclue/footer.php'?>
 </body>
 </html>

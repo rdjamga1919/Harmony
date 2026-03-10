@@ -15,7 +15,7 @@ require_once(__DIR__ . '/../../config.php');?>
 <footer class="text-white py-4 mt-5"
         style="background-color: #c9a0a0;">
     <div class="container text-center">
-        <p class="mb-2 fs-5">© 2025 – Tous droits réservés Rosie Djmaga - Anaïs Kriegel--Grapain - Onesime Ngakosso-Ibara - Jordan Homere</p>
+        <p class="mb-2 fs-5">© 2025 – Tous droits réservés Rosie Djamga - Anaïs Kriegel--Grapain - Onesime Ngakosso-Ibara - Jordan Homere</p>
 
     </div>
 </footer>

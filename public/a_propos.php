@@ -16,7 +16,7 @@ require_once(__DIR__ . '/../config.php');
 <header class="hero">
     <div class="hero-text">
         <p class="hero-eyebrow">✦ Notre histoire</p>
-        <h1 class="hero-title">Un espace pour <em>prendre soin</em> de soi</h1>
+        <h1 class="hero-title">Un espace pour <em>prendre soin</em> de soi et <em>s'informer</em></h1>
         <p class="hero-desc">Campus Bien-être est né d'une conviction simple : la santé mentale et émotionnelle des étudiants mérite une vraie place dans la vie universitaire.</p>
     </div>
     <div class="hero-visual">

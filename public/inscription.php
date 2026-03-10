@@ -1,5 +1,4 @@
 <?php
-
 require_once(__DIR__ . '/../config.php');
 
 $message = "";
@@ -9,8 +8,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail = htmlspecialchars($_POST["mail"]);
     $pseudo = htmlspecialchars($_POST["pseudo"]);
     $etablissement = htmlspecialchars($_POST["etablissement"]);
+    $mot_de_passe = $_POST["mot_de_passe"]; // on ne filtre pas le mot de passe ici (on le hachera plus tard)
 
-    // Affichage des données reçues
+    // Affichage des données reçues (sans afficher le mot de passe !)
     $message = "<div style='background-color: #dff0d8; padding: 15px; margin: 10px 0; border: 1px solid #d6e9c6;'>
                 <h3>Inscription réussie !</h3>
                 <p><strong>Nom:</strong> $nom</p>
@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p><strong>Email:</strong> $mail</p>
                 <p><strong>Pseudo:</strong> $pseudo</p>
                 <p><strong>Établissement:</strong> $etablissement</p>
+                <p><em>Mot de passe reçu (non affiché pour sécurité).</em></p>
                 </div>";
 }
 ?>
@@ -30,45 +31,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Page d'Inscription</title>
 </head>
 <body>
-    <h1>Formulaire d'Inscription</h1>
+<h1>Formulaire d'Inscription</h1>
 
-    <?php echo $message; ?>
+<?php echo $message; ?>
 
-    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-        <div>
-            <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" required>
-        </div>
-        <br>
+<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <div>
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required>
+    </div>
+    <br>
 
-        <div>
-            <label for="prenom">Prénom :</label>
-            <input type="text" id="prenom" name="prenom" required>
-        </div>
-        <br>
+    <div>
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" required>
+    </div>
+    <br>
 
-        <div>
-            <label for="mail">Email :</label>
-            <input type="email" id="mail" name="mail" required>
-        </div>
-        <br>
+    <div>
+        <label for="mail">Email :</label>
+        <input type="email" id="mail" name="mail" required>
+    </div>
+    <br>
 
-        <div>
-            <label for="pseudo">Pseudo :</label>
-            <input type="text" id="pseudo" name="pseudo" required>
-        </div>
-        <br>
+    <div>
+        <label for="pseudo">Pseudo :</label>
+        <input type="text" id="pseudo" name="pseudo" required>
+    </div>
+    <br>
 
-        <div>
-            <label for="etablissement">Nom de l'établissement :</label>
-            <input type="text" id="etablissement" name="etablissement" required>
-        </div>
-        <br>
+    <div>
+        <label for="mot_de_passe">Mot de passe :</label>
+        <input type="password" id="mot_de_passe" name="mot_de_passe" required minlength="6">
+    </div>
+    <br>
 
-        <div>
-            <input type="submit" value="S'inscrire">
-            <input type="reset" value="Effacer">
-        </div>
-    </form>
+    <div>
+        <label for="etablissement">Nom de l'établissement :</label>
+        <input type="text" id="etablissement" name="etablissement" required>
+    </div>
+    <br>
+
+    <div>
+        <input type="submit" value="S'inscrire">
+        <input type="reset" value="Effacer">
+    </div>
+</form>
 </body>
 </html>

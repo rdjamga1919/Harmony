@@ -38,7 +38,7 @@ if(empty($identifiant)|| empty($password)){
 
 if (empty($erreurs)){
     try {
-        $requete = $pdo->prepare("SELECT id, pseudo, email, mdp, role FROM utilisateur WHERE pseudo = :identifiant OR email = :identifiant LIMIT 1");
+        $requete = $pdo->prepare("SELECT id_utilisateur, pseudo, email, mdp, role FROM utilisateur WHERE pseudo = :identifiant OR email = :identifiant LIMIT 1");
         $requete->execute([
             "identifiant" => $identifiant,
         ]);
@@ -50,9 +50,9 @@ if (empty($erreurs)){
         }else{
             session_regenerate_id(true); //apres la connexion recreer une autre session pour securoité
 
-            $_SESSION['user_id'] = $utilisateurs['id'];
-            $_SESSION['user_pseudo'] = $utilisateurs['pseudo'];
-            $_SESSION['user_email'] = $utilisateurs['email'];
+            $_SESSION['id_utilisateur'] = $utilisateurs['id'];
+            $_SESSION['pseudo'] = $utilisateurs['pseudo'];
+            $_SESSION['email'] = $utilisateurs['email'];
             $_SESSION['role']= $utilisateurs['role'];
             $_SESSION['logged_in'] = true;
             $_SESSION['login_time'] = time();
@@ -62,8 +62,8 @@ if (empty($erreurs)){
 
             if($utilisateurs['role'] === 'admin'){
                 header('Location: ../public/admin/dashboard.php');
+                exit;
             }
-
             header('Location: ../public/forum.php');
             exit;
         }
@@ -75,5 +75,5 @@ if (empty($erreurs)){
 $_SESSION['erreurs'] = $erreurs;
 $_SESSION['valeurs'] = $valeurs;
 
-header('Location: /Harmony/index.php');
+header('Location: /index.php');
 exit;

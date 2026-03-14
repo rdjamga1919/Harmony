@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harmony</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<!-- Radios CSS-only pour la navigation entre vues -->
+<input type="radio" class="tab-radio" name="tab" id="tab-dashboard" checked />
+<input type="radio" class="tab-radio" name="tab" id="tab-users" />
+<input type="radio" class="tab-radio" name="tab" id="tab-admin" />
+<input type="radio" class="tab-radio" name="tab" id="tab-activity" />
+
+<div class="layout">
+
+    <!-- ════════════ SIDEBAR ════════════ -->
+    <aside class="sidebar">
+        <div class="sidebar-stripe"></div>
+
+        <div class="sidebar-logo">
+            <div class="brand">⬡ Harmony</div>
+            <div class="tagline">Panneau de contrôle</div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-label">Principal</div>
+
+            <label class="nav-item active" for="tab-dashboard">
+                <span class="ico">🏠</span> Tableau de bord
+            </label>
+
+            <label class="nav-item" for="tab-users">
+                <span class="ico">👥</span> Gérer les utilisateurs
+                <span class="nav-badge">12</span>
+            </label>
+
+            <div class="nav-label">Administration</div>
+
+            <label class="nav-item" for="tab-admin">
+                <span class="ico">🛡️</span> Ajouter un admin
+            </label>
+
+            <label class="nav-item" for="tab-activity">
+                <span class="ico">📋</span> Journal d'activité
+            </label>
+
+            <div class="nav-label">Système</div>
+            <div class="nav-item"><span class="ico">⚙️</span> Paramètres</div>
+            <div class="nav-item"><span class="ico">🔒</span> Sécurité</div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="admin-card">
+                <div class="av">SA</div>
+                <div class="admin-info">
+                    <div class="name">Super Admin</div>
+                    <div class="role">Administrateur</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ════════════ MAIN ════════════ -->
+    <div class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="topbar-title">
+                <span class="title-dashboard">Tableau de bord</span>
+                <span class="title-users">Gestion des utilisateurs</span>
+                <span class="title-admin">Ajouter un administrateur</span>
+                <span class="title-activity">Journal d'activité</span>
+            </div>
+            <div class="topbar-actions">
+                <label class="btn btn-ghost btn-sm" for="tab-activity">📋 Activité</label>
+                <a class="btn btn-danger btn-sm" href="#">⏻ Déconnexion</a>
+            </div>
+        </header>
+
+        <div class="content">
+
+            <!-- ══ VUE : TABLEAU DE BORD ══ -->
+            <div class="view view-dashboard">
+
+                <div class="stats-grid">
+                    <div class="stat-card c-blue">
+                        <div class="stat-ico">👥</div>
+                        <div class="stat-val">12</div>
+                        <div class="stat-lbl">Utilisateurs total</div>
+                        <div class="stat-chg up">↑ +12% ce mois</div>
+                    </div>
+                    <div class="stat-card c-green">
+                        <div class="stat-ico">✅</div>
+                        <div class="stat-val">8</div>
+                        <div class="stat-lbl">Comptes actifs</div>
+                        <div class="stat-chg up">↑ +5% ce mois</div>
+                    </div>
+                    <div class="stat-card c-orange">
+                        <div class="stat-ico">🛡️</div>
+                        <div class="stat-val">2</div>
+                        <div class="stat-lbl">Administrateurs</div>
+                        <div class="stat-chg up">↑ +1 ce mois</div>
+                    </div>
+                    <div class="stat-card c-red">
+                        <div class="stat-ico">🚫</div>
+                        <div class="stat-val">2</div>
+                        <div class="stat-lbl">Comptes suspendus</div>
+                        <div class="stat-chg down">↓ -1 ce mois</div>
+                    </div>
+                </div>
+
+                <!-- Utilisateurs récents -->
+                <div class="sec-hdr">
+                    <div class="sec-title">Utilisateurs récents</div>
+                    <label class="btn btn-ghost btn-sm" for="tab-users">Voir tous →</label>
+                </div>
+                <div class="tcard">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Utilisateur</th>
+                            <th>Rôle</th>
+                            <th>Statut</th>
+                            <th>Inscription</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#8aaa88">SM</div><div><div class="uname">Sophie Martin</div><div class="uemail">sophie.martin@mail.fr</div></div></div></td>
+                            <td><span class="badge b-user">Utilisateur</span></td>
+                            <td><span class="badge b-active">Actif</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">12/01/2024</td>
+                            <td><div class="actbtns"><div class="ibtn" title="Consulter">👁️</div><div class="ibtn" title="Modifier">✏️</div><div class="ibtn" title="Suspendre">⚠️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#b85450">MD</div><div><div class="uname">Marc Dupont</div><div class="uemail">marc.dupont@mail.fr</div></div></div></td>
+                            <td><span class="badge b-user">Utilisateur</span></td>
+                            <td><span class="badge b-suspended">Suspendu</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">03/03/2024</td>
+                            <td><div class="actbtns"><div class="ibtn" title="Consulter">👁️</div><div class="ibtn" title="Modifier">✏️</div><div class="ibtn" title="Réactiver">⚠️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#c9866b">JL</div><div><div class="uname">Julie Lefebvre</div><div class="uemail">julie.lefebvre@mail.fr</div></div></div></td>
+                            <td><span class="badge b-admin">Admin</span></td>
+                            <td><span class="badge b-active">Actif</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">15/11/2023</td>
+                            <td><div class="actbtns"><div class="ibtn" title="Consulter">👁️</div><div class="ibtn" title="Modifier">✏️</div><div class="ibtn" title="Suspendre">⚠️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#4e6e4c">TB</div><div><div class="uname">Thomas Bernard</div><div class="uemail">thomas.b@mail.fr</div></div></div></td>
+                            <td><span class="badge b-user">Utilisateur</span></td>
+                            <td><span class="badge b-active">Actif</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">08/05/2024</td>
+                            <td><div class="actbtns"><div class="ibtn" title="Consulter">👁️</div><div class="ibtn" title="Modifier">✏️</div><div class="ibtn" title="Suspendre">⚠️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#b8892a">ER</div><div><div class="uname">Emma Rousseau</div><div class="uemail">emma.r@mail.fr</div></div></div></td>
+                            <td><span class="badge b-user">Utilisateur</span></td>
+                            <td><span class="badge b-inactive">Inactif</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">22/07/2023</td>
+                            <td><div class="actbtns"><div class="ibtn" title="Consulter">👁️</div><div class="ibtn" title="Modifier">✏️</div><div class="ibtn" title="Suspendre">⚠️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Activité récente -->
+                <div class="sec-hdr"><div class="sec-title">Activité récente</div></div>
+                <div class="tcard">
+                    <div class="aitem"><div class="adot blue"></div><div><div class="atxt">Nouveau compte créé : <strong>Sophie Martin</strong></div><div class="atime">Il y a 5 min</div></div></div>
+                    <div class="aitem"><div class="adot red"></div><div><div class="atxt">Compte suspendu : <strong>Marc Dupont</strong></div><div class="atime">Il y a 22 min</div></div></div>
+                    <div class="aitem"><div class="adot green"></div><div><div class="atxt">Admin ajouté : <strong>Julie Lefebvre</strong></div><div class="atime">Il y a 1h</div></div></div>
+                    <div class="aitem"><div class="adot orange"></div><div><div class="atxt">Profil modifié : <strong>Thomas Bernard</strong></div><div class="atime">Il y a 2h</div></div></div>
+                    <div class="aitem"><div class="adot red"></div><div><div class="atxt">Compte supprimé : <strong>Pierre Moreau</strong></div><div class="atime">Il y a 3h</div></div></div>
+                </div>
+            </div>
+
+            <!-- ══ VUE : GESTION UTILISATEURS ══ -->
+            <div class="view view-users">
+                <div class="sec-hdr">
+                    <div class="sec-title">Gestion des utilisateurs</div>
+                    <label class="btn btn-primary" for="tab-admin">＋ Ajouter un utilisateur</label>
+                </div>
+                <div class="tcard">
+                    <div class="ttoolbar">
+                        <div class="search-wrap">
+                            <span class="sico">🔍</span>
+                            <input class="sinput" type="text" placeholder="Rechercher un utilisateur…" />
+                        </div>
+                        <select class="fsel">
+                            <option>Tous les statuts</option>
+                            <option>Actif</option>
+                            <option>Inactif</option>
+                            <option>Suspendu</option>
+                        </select>
+                        <select class="fsel">
+                            <option>Tous les rôles</option>
+                            <option>Utilisateur</option>
+                            <option>Admin</option>
+                        </select>
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Utilisateur</th>
+                            <th>Rôle</th>
+                            <th>Statut</th>
+                            <th>Inscription</th>
+                            <th>Dernière connexion</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#8aaa88">SM</div><div><div class="uname">Sophie Martin</div><div class="uemail">sophie.martin@mail.fr</div></div></div></td>
+                            <td><span class="badge b-user">Utilisateur</span></td>
+                            <td><span class="badge b-active">Actif</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">12/01/2024</td>
+                            <td style="color:var(--text-muted);font-size:.82rem">Aujourd'hui</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#b85450">MD</div><div><div class="uname">Marc Dupont</div><div class="uemail">marc.dupont@mail.fr</div></div></div></td>
+                            <td><span class="badge b-user">Utilisateur</span></td>
+                            <td><span class="badge b-suspended">Suspendu</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">03/03/2024</td>
+                            <td style="color:var(--text-muted);font-size:.82rem">Il y a 3 jours</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#c9866b">JL</div><div><div class="uname">Julie Lefebvre</div><div class="uemail">julie.lefebvre@mail.fr</div></div></div></td>
+                            <td><span class="badge b-admin">Admin</span></td>
+                            <td><span class="badge b-active">Actif</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">15/11/2023</td>
+                            <td style="color:var(--text-muted);font-size:.82rem">Hier</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#4e6e4c">TB</div><div><div class="uname">Thomas Bernard</div><div class="uemail">thomas.b@mail.fr</div></div></div></td>
+                            <td><span class="badge b-user">Utilisateur</span></td>
+                            <td><span class="badge b-active">Actif</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">08/05/2024</td>
+                            <td style="color:var(--text-muted);font-size:.82rem">Il y a 2 jours</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#b8892a">ER</div><div><div class="uname">Emma Rousseau</div><div class="uemail">emma.r@mail.fr</div></div></div></td>
+                            <td><span class="badge b-user">Utilisateur</span></td>
+                            <td><span class="badge b-inactive">Inactif</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">22/07/2023</td>
+                            <td style="color:var(--text-muted);font-size:.82rem">Il y a 30 jours</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#8aaa88">LP</div><div><div class="uname">Lucas Petit</div><div class="uemail">lucas.p@mail.fr</div></div></div></td>
+                            <td><span class="badge b-user">Utilisateur</span></td>
+                            <td><span class="badge b-active">Actif</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">01/02/2024</td>
+                            <td style="color:var(--text-muted);font-size:.82rem">Aujourd'hui</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#c9866b">CS</div><div><div class="uname">Camille Simon</div><div class="uemail">camille.s@mail.fr</div></div></div></td>
+                            <td><span class="badge b-admin">Admin</span></td>
+                            <td><span class="badge b-active">Actif</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">10/09/2023</td>
+                            <td style="color:var(--text-muted);font-size:.82rem">Hier</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#4e6e4c">AM</div><div><div class="uname">Antoine Michel</div><div class="uemail">antoine.m@mail.fr</div></div></div></td>
+                            <td><span class="badge b-user">Utilisateur</span></td>
+                            <td><span class="badge b-active">Actif</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">14/04/2024</td>
+                            <td style="color:var(--text-muted);font-size:.82rem">Il y a 5 jours</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#b85450">LG</div><div><div class="uname">Léa Garcia</div><div class="uemail">lea.g@mail.fr</div></div></div></td>
+                            <td><span class="badge b-user">Utilisateur</span></td>
+                            <td><span class="badge b-suspended">Suspendu</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">27/12/2023</td>
+                            <td style="color:var(--text-muted);font-size:.82rem">Il y a 15 jours</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#8aaa88">HM</div><div><div class="uname">Hugo Martinez</div><div class="uemail">hugo.m@mail.fr</div></div></div></td>
+                            <td><span class="badge b-user">Utilisateur</span></td>
+                            <td><span class="badge b-active">Actif</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">05/06/2024</td>
+                            <td style="color:var(--text-muted);font-size:.82rem">Aujourd'hui</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#b8892a">IL</div><div><div class="uname">Inès Lopez</div><div class="uemail">ines.l@mail.fr</div></div></div></td>
+                            <td><span class="badge b-user">Utilisateur</span></td>
+                            <td><span class="badge b-active">Actif</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">18/08/2023</td>
+                            <td style="color:var(--text-muted);font-size:.82rem">Hier</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav" style="background:#4e6e4c">ND</div><div><div class="uname">Nathan Durand</div><div class="uemail">nathan.d@mail.fr</div></div></div></td>
+                            <td><span class="badge b-user">Utilisateur</span></td>
+                            <td><span class="badge b-inactive">Inactif</span></td>
+                            <td style="color:var(--text-muted);font-size:.82rem">30/10/2023</td>
+                            <td style="color:var(--text-muted);font-size:.82rem">Il y a 45 jours</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ══ VUE : AJOUTER ADMIN ══ -->
+            <div class="view view-admin">
+                <div class="sec-hdr"><div class="sec-title">Ajouter un administrateur</div></div>
+                <div class="fpage">
+                    <div class="fpinfo">
+                        <h2>Nouveau compte administrateur</h2>
+                        <p>Les administrateurs ont accès complet au panneau de contrôle.</p>
+                    </div>
+                    <div class="fgrid">
+                        <div class="fg">
+                            <label class="flbl">Prénom</label>
+                            <input class="finput" type="text" placeholder="Prénom" />
+                        </div>
+                        <div class="fg">
+                            <label class="flbl">Nom</label>
+                            <input class="finput" type="text" placeholder="Nom" />
+                        </div>
+                        <div class="fg full">
+                            <label class="flbl">Adresse e-mail</label>
+                            <input class="finput" type="email" placeholder="admin@domaine.fr" />
+                        </div>
+                        <div class="fg full">
+                            <label class="flbl">Niveau d'accès</label>
+                            <select class="fsel2">
+                                <option>Modérateur</option>
+                                <option>Administrateur</option>
+                                <option>Super Administrateur</option>
+                            </select>
+                        </div>
+                        <div class="fg">
+                            <label class="flbl">Mot de passe</label>
+                            <input class="finput" type="password" placeholder="Min. 8 caractères" />
+                        </div>
+                        <div class="fg">
+                            <label class="flbl">Confirmer</label>
+                            <input class="finput" type="password" placeholder="••••••••" />
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <label class="btn btn-ghost" for="tab-dashboard">Annuler</label>
+                        <button class="btn btn-primary" type="button">🛡️ Créer l'administrateur</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ VUE : JOURNAL D'ACTIVITÉ ══ -->
+            <div class="view view-activity">
+                <div class="sec-hdr">
+                    <div class="sec-title">Journal d'activité</div>
+                    <button class="btn btn-ghost btn-sm" type="button">⬇ Exporter CSV</button>
+                </div>
+                <div class="tcard">
+                    <div class="aitem"><div class="adot blue"></div><div><div class="atxt">Nouveau compte créé : <strong>Sophie Martin</strong></div><div class="atime">Il y a 5 min</div></div></div>
+                    <div class="aitem"><div class="adot red"></div><div><div class="atxt">Compte suspendu : <strong>Marc Dupont</strong></div><div class="atime">Il y a 22 min</div></div></div>
+                    <div class="aitem"><div class="adot green"></div><div><div class="atxt">Admin ajouté : <strong>Julie Lefebvre</strong></div><div class="atime">Il y a 1h</div></div></div>
+                    <div class="aitem"><div class="adot orange"></div><div><div class="atxt">Profil modifié : <strong>Thomas Bernard</strong></div><div class="atime">Il y a 2h</div></div></div>
+                    <div class="aitem"><div class="adot red"></div><div><div class="atxt">Compte supprimé : <strong>Pierre Moreau</strong></div><div class="atime">Il y a 3h</div></div></div>
+                    <div class="aitem"><div class="adot blue"></div><div><div class="atxt">Connexion admin depuis <strong>192.168.1.1</strong></div><div class="atime">Il y a 4h</div></div></div>
+                    <div class="aitem"><div class="adot green"></div><div><div class="atxt">Compte réactivé : <strong>Emma Rousseau</strong></div><div class="atime">Hier</div></div></div>
+                    <div class="aitem"><div class="adot orange"></div><div><div class="atxt">Profil modifié : <strong>Lucas Petit</strong></div><div class="atime">Hier</div></div></div>
+                    <div class="aitem"><div class="adot blue"></div><div><div class="atxt">Nouveau compte créé : <strong>Hugo Martinez</strong></div><div class="atime">Il y a 2 jours</div></div></div>
+                    <div class="aitem"><div class="adot red"></div><div><div class="atxt">Compte suspendu : <strong>Léa Garcia</strong></div><div class="atime">Il y a 2 jours</div></div></div>
+                </div>
+            </div>
+
+        </div><!-- /content -->
+    </div><!-- /main -->
+</div><!-- /layout -->
+
+</body>
+</html>

@@ -2,7 +2,7 @@
 require_once(__DIR__ . '/../../source/fonctions/authentification.php');
 
 if (!estAdmin()) {
-    echo "Vous n'avez pas les acces.";
+    exigerConnexion();
 }
 ?>
 <!DOCTYPE html>
@@ -66,8 +66,11 @@ if (!estAdmin()) {
 
     <section>
         <h2>Navigation</h2>
-        <p><a href="../index.php">Retour au site</a></p>
+        <p><a href="/index.php">Retour au site</a></p>
     </section>
+    <form action="/../traitement/deconnexion.php" method="post">
+        <button type="submit">Se déconnecter</button>
+    </form>
 </main>
 
 <footer>

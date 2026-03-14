@@ -7,5 +7,5 @@ const ROOT = __DIR__ ;
 //page pour universaliser l'acces a la bdd sur mamp et wamp
 //fichier config est important car il me permet de lier toute mes pages
 // a la bdd sans devoir changer le chemin vers bdd.php dans chaque page
-const BASE_URL = '/harmony';
+const BASE_URL = '/Harmony';
 //define('BASE_URL', '/harmony'); > ancienne écriture

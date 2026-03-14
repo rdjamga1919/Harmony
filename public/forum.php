@@ -2,7 +2,7 @@
 
 require_once(__DIR__ . '/../config.php');
 require_once(__DIR__ . '/../source/fonctions/authentification.php');
-//exigerConnexion();
+exigerConnexion();
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ require_once(__DIR__ . '/../source/fonctions/authentification.php');
     <label for="content">Contenu du post </label><br>
     <textarea id="content" name="content" rows="4" cols="50"></textarea><br><br>
     <button type="submit">Publier</button>
-</form>
-<?php include '../source/inclue/footer.php'?>
+
+
 </body>
 </html>

@@ -27,3 +27,11 @@ function supprimerUtilisateur(PDO $pdo, int $idUtilisateur): bool
     ]);
 
 }
+function supprimerCommentaire(PDO $pdo,int $idCommentaire) : bool
+{
+    $sql = "DELETE FROM commentaire WHERE id_commentaire = :id_commentaire";
+    $requete = $pdo->prepare($sql);
+    return $requete->execute([
+        ':id_commentaire' => $idCommentaire
+    ]);
+}

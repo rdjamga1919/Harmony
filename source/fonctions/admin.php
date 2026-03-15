@@ -12,13 +12,8 @@ function exigerAdmin(): void
 }
 function promouvoirEnAdmin(PDO $pdo, int $idUtilisateur): bool
 {
-    $sql = "UPDATE utilisateur
-            SET role = 'admin'
-            WHERE id_utilisateur = :id_utilisateur
-            AND role != 'admin'";
-
+    $sql = "UPDATE utilisateur SET role = 'admin' WHERE id_utilisateur = :id_utilisateur AND role != 'admin'";
     $requete = $pdo->prepare($sql);
-
     return $requete->execute([
         ':id_utilisateur' => $idUtilisateur
     ]);

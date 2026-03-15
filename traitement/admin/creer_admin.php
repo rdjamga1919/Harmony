@@ -8,21 +8,21 @@ exigerAdmin();
 // ici, je mets la bdd juste pour extraire des infos pas de requêtes de traitements réelles
 $pdo = require_once(ROOT . '/source/bdd/connexion_bdd.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $_SESSION['erreurs'] = ["Méthode non autorisée."];
     header('Location: ' . BASE_URL . '/public/admin/utilisateurs.php');
     exit;
 }
-if (empty($_POST['id_utilisateurs'])){
+if (empty($_POST['id_utilisateur'])){
     $_SESSION['erreurs'] = ["Utilisateur introuvable."];
     header('Location: ' . BASE_URL . '/public/admin/utilisateurs.php');
     exit();
 }
 
-$idUtilisateur = (int) $_POST['id_utilisateur'];
+$idUtilisateur = (int) $_POST['id_utilisateur']; //expliquer cette ligne
 
 if ($idUtilisateur <= 0){
-    $idUtilisateur = (int) $_POST['id_utilisateur'];
+    $_SESSION['erreurs'] = ["Identifiant utilisateur invalide."];
     header('Location: ' . BASE_URL . '/public/admin/utilisateurs.php');
     exit();
 }
@@ -39,5 +39,5 @@ try {
     $_SESSION['erreurs'] = ["Une erreur est survenue lors de la promotion de l'utilisateur."];
 }
 
-header('Location: ROOT . /public/admin/utilisateurs.php');
+header('Location:' . BASE_URL .'/public/admin/utilisateurs.php');
 exit;

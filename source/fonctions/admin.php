@@ -18,3 +18,12 @@ function promouvoirEnAdmin(PDO $pdo, int $idUtilisateur): bool
         ':id_utilisateur' => $idUtilisateur
     ]);
 }
+function supprimerUtilisateur(PDO $pdo, int $idUtilisateur): bool
+{
+    $sql = "DELETE FROM utilisateur WHERE id_utilisateur = :id_utilisateur ";
+    $requete = $pdo->prepare($sql);
+    return $requete->execute([
+        ':id_utilisateur' => $idUtilisateur
+    ]);
+
+}

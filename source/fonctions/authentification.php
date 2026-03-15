@@ -65,8 +65,5 @@ function deconnecterUtilisateur(): void
     session_destroy();
 
 }
-function estAdmin(): bool {
-    return isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
-}
 
 

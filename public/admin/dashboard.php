@@ -91,7 +91,7 @@ $lastUsers = $requete->fetchAll(PDO::FETCH_ASSOC); //PDO::FETCH_ASSOC important 
                 <p>Consulter, modérer ou supprimer des comptes utilisateurs.</p>
             </a>
 
-            <a href="posts.php" class="admin-card">
+            <a href="post.php" class="admin-card">
                 <h3>Gérer les posts</h3>
                 <p>Voir les publications et intervenir si nécessaire.</p>
             </a>

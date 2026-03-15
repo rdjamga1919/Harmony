@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/public/admin/post.php" value="b0913287-9bd2-4360-a7fb-f6c0a75e20d2" />
     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/b0913287-9bd2-4360-a7fb-f6c0a75e20d2/console.sql" value="b0913287-9bd2-4360-a7fb-f6c0a75e20d2" />
   </component>
 </project>

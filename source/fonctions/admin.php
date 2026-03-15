@@ -16,6 +16,7 @@ function promouvoirEnAdmin(PDO $pdo, int $idUtilisateur): bool
     $requete = $pdo->prepare($sql);
     return $requete->execute([
         ':id_utilisateur' => $idUtilisateur
+
     ]);
 }
 function supprimerUtilisateur(PDO $pdo, int $idUtilisateur): bool
@@ -33,5 +34,13 @@ function supprimerCommentaire(PDO $pdo,int $idCommentaire) : bool
     $requete = $pdo->prepare($sql);
     return $requete->execute([
         ':id_commentaire' => $idCommentaire
+    ]);
+}
+function supprimerPost(PDO $pdo, int $idPoste) : bool
+{
+    $sql = "DELETE FROM poste WHERE id_poste = :id_poste";
+    $requete = $pdo->prepare($sql);
+    return $requete->execute([
+        ':id_poste'=> $idPoste
     ]);
 }

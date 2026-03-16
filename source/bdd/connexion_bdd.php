@@ -1,10 +1,9 @@
 <?php
-
-$host = '127.0.0.1';  // 127.0.0.1 force TCP/IP
-$port = 8889;         // Vous changez pour 3306 car vous etes sur windows
+$host = 'localhost';
+$port = 3306;
 $dbname = 'campus_bien_etre';
 $user = 'root';
-$pass = 'root';           // WAMP vide par défaut, MAMP "root" donc vous laissez vide
+$pass = '';
 
 try {
     $bdd = new PDO(
@@ -13,7 +12,6 @@ try {
         $pass
     );
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connexion réussie !";
 } catch (PDOException $e) {
     echo "Erreur : " . $e->getMessage();
 }

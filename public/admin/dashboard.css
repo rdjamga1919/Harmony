@@ -119,6 +119,7 @@ body {
     margin-bottom: 2px;
     text-decoration: none;
     border: 1px solid transparent;
+    cursor: pointer;
 }
 
 .nav-item:hover {
@@ -469,7 +470,7 @@ tbody tr:hover { background: rgba(197,217,194,0.09); }
     display: flex; align-items: center; justify-content: center;
     font-size: 0.78rem;
     text-decoration: none;
-    cursor: default;
+    cursor: pointer;
 }
 
 .ibtn:hover { background: var(--linen); color: var(--text-main); }
@@ -581,22 +582,15 @@ tbody tr:hover { background: rgba(197,217,194,0.09); }
 /* ══════════════════════════════════════
    TABS (navigation entre vues)
 ══════════════════════════════════════ */
-/* Trick CSS-only : on utilise des <input type="radio"> cachés
-   avec des <label> dans la sidebar, et les vues s'affichent/cachent
-   grâce aux sélecteurs ~ */
-
 .tab-radio { display: none; }
 
-/* Toutes les vues cachées par défaut */
 .view { display: none; }
 
-/* Afficher la vue selon le radio coché */
 #tab-dashboard:checked ~ .layout .view-dashboard,
 #tab-users:checked    ~ .layout .view-users,
 #tab-admin:checked    ~ .layout .view-admin,
 #tab-activity:checked ~ .layout .view-activity { display: block; }
 
-/* Nav item actif selon le radio coché */
 #tab-dashboard:checked ~ .layout label[for="tab-dashboard"],
 #tab-users:checked     ~ .layout label[for="tab-users"],
 #tab-admin:checked     ~ .layout label[for="tab-admin"],
@@ -607,14 +601,13 @@ tbody tr:hover { background: rgba(197,217,194,0.09); }
     border-color: rgba(138,170,136,0.3);
 }
 
-/* Titre topbar selon le radio coché */
 #tab-dashboard:checked ~ .layout .title-dashboard,
 #tab-users:checked     ~ .layout .title-users,
 #tab-admin:checked     ~ .layout .title-admin,
 #tab-activity:checked  ~ .layout .title-activity { display: block; }
 
 .topbar-title span { display: none; }
-.topbar-title span:first-child { display: block; } /* fallback dashboard */
+.topbar-title span:first-child { display: block; }
 
 /* ══════════════════════════════════════
    SCROLLBAR

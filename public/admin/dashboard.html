@@ -13,6 +13,8 @@
 <input type="radio" class="tab-radio" name="tab" id="tab-users" />
 <input type="radio" class="tab-radio" name="tab" id="tab-admin" />
 <input type="radio" class="tab-radio" name="tab" id="tab-activity" />
+<input type="radio" class="tab-radio" name="tab" id="tab-posts" />
+<input type="radio" class="tab-radio" name="tab" id="tab-comments" />
 
 <div class="layout">
 
@@ -28,13 +30,25 @@
         <nav class="sidebar-nav">
             <div class="nav-label">Principal</div>
 
-            <label class="nav-item active" for="tab-dashboard">
+            <label class="nav-item" for="tab-dashboard">
                 <span class="ico">🏠</span> Tableau de bord
             </label>
 
             <label class="nav-item" for="tab-users">
                 <span class="ico">👥</span> Gérer les utilisateurs
                 <span class="nav-badge">12</span>
+            </label>
+
+            <div class="nav-label">Contenu</div>
+
+            <label class="nav-item" for="tab-posts">
+                <span class="ico">📝</span> Gérer les posts
+                <span class="nav-badge">24</span>
+            </label>
+
+            <label class="nav-item" for="tab-comments">
+                <span class="ico">💬</span> Gérer les commentaires
+                <span class="nav-badge">58</span>
             </label>
 
             <div class="nav-label">Administration</div>
@@ -73,6 +87,8 @@
                 <span class="title-users">Gestion des utilisateurs</span>
                 <span class="title-admin">Ajouter un administrateur</span>
                 <span class="title-activity">Journal d'activité</span>
+                <span class="title-posts">Gestion des posts</span>
+                <span class="title-comments">Gestion des commentaires</span>
             </div>
             <div class="topbar-actions">
                 <label class="btn btn-ghost btn-sm" for="tab-activity">📋 Activité</label>
@@ -99,20 +115,19 @@
                         <div class="stat-chg up">↑ +5% ce mois</div>
                     </div>
                     <div class="stat-card c-orange">
-                        <div class="stat-ico">🛡️</div>
-                        <div class="stat-val">2</div>
-                        <div class="stat-lbl">Administrateurs</div>
-                        <div class="stat-chg up">↑ +1 ce mois</div>
+                        <div class="stat-ico">📝</div>
+                        <div class="stat-val">24</div>
+                        <div class="stat-lbl">Posts publiés</div>
+                        <div class="stat-chg up">↑ +3 ce mois</div>
                     </div>
                     <div class="stat-card c-red">
-                        <div class="stat-ico">🚫</div>
-                        <div class="stat-val">2</div>
-                        <div class="stat-lbl">Comptes suspendus</div>
-                        <div class="stat-chg down">↓ -1 ce mois</div>
+                        <div class="stat-ico">💬</div>
+                        <div class="stat-val">58</div>
+                        <div class="stat-lbl">Commentaires</div>
+                        <div class="stat-chg up">↑ +14 ce mois</div>
                     </div>
                 </div>
 
-                <!-- Utilisateurs récents -->
                 <div class="sec-hdr">
                     <div class="sec-title">Utilisateurs récents</div>
                     <label class="btn btn-ghost btn-sm" for="tab-users">Voir tous →</label>
@@ -130,45 +145,44 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#8aaa88">SM</div><div><div class="uname">Sophie Martin</div><div class="uemail">sophie.martin@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-green">SM</div><div><div class="uname">Sophie Martin</div><div class="uemail">sophie.martin@mail.fr</div></div></div></td>
                             <td><span class="badge b-user">Utilisateur</span></td>
                             <td><span class="badge b-active">Actif</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">12/01/2024</td>
-                            <td><div class="actbtns"><div class="ibtn" title="Consulter">👁️</div><div class="ibtn" title="Modifier">✏️</div><div class="ibtn" title="Suspendre">⚠️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                            <td class="td-muted">12/01/2024</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#b85450">MD</div><div><div class="uname">Marc Dupont</div><div class="uemail">marc.dupont@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-red">MD</div><div><div class="uname">Marc Dupont</div><div class="uemail">marc.dupont@mail.fr</div></div></div></td>
                             <td><span class="badge b-user">Utilisateur</span></td>
                             <td><span class="badge b-suspended">Suspendu</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">03/03/2024</td>
-                            <td><div class="actbtns"><div class="ibtn" title="Consulter">👁️</div><div class="ibtn" title="Modifier">✏️</div><div class="ibtn" title="Réactiver">⚠️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                            <td class="td-muted">03/03/2024</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#c9866b">JL</div><div><div class="uname">Julie Lefebvre</div><div class="uemail">julie.lefebvre@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-orange">JL</div><div><div class="uname">Julie Lefebvre</div><div class="uemail">julie.lefebvre@mail.fr</div></div></div></td>
                             <td><span class="badge b-admin">Admin</span></td>
                             <td><span class="badge b-active">Actif</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">15/11/2023</td>
-                            <td><div class="actbtns"><div class="ibtn" title="Consulter">👁️</div><div class="ibtn" title="Modifier">✏️</div><div class="ibtn" title="Suspendre">⚠️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                            <td class="td-muted">15/11/2023</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#4e6e4c">TB</div><div><div class="uname">Thomas Bernard</div><div class="uemail">thomas.b@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-dark">TB</div><div><div class="uname">Thomas Bernard</div><div class="uemail">thomas.b@mail.fr</div></div></div></td>
                             <td><span class="badge b-user">Utilisateur</span></td>
                             <td><span class="badge b-active">Actif</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">08/05/2024</td>
-                            <td><div class="actbtns"><div class="ibtn" title="Consulter">👁️</div><div class="ibtn" title="Modifier">✏️</div><div class="ibtn" title="Suspendre">⚠️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                            <td class="td-muted">08/05/2024</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#b8892a">ER</div><div><div class="uname">Emma Rousseau</div><div class="uemail">emma.r@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-yellow">ER</div><div><div class="uname">Emma Rousseau</div><div class="uemail">emma.r@mail.fr</div></div></div></td>
                             <td><span class="badge b-user">Utilisateur</span></td>
                             <td><span class="badge b-inactive">Inactif</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">22/07/2023</td>
-                            <td><div class="actbtns"><div class="ibtn" title="Consulter">👁️</div><div class="ibtn" title="Modifier">✏️</div><div class="ibtn" title="Suspendre">⚠️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                            <td class="td-muted">22/07/2023</td>
+                            <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <!-- Activité récente -->
                 <div class="sec-hdr"><div class="sec-title">Activité récente</div></div>
                 <div class="tcard">
                     <div class="aitem"><div class="adot blue"></div><div><div class="atxt">Nouveau compte créé : <strong>Sophie Martin</strong></div><div class="atime">Il y a 5 min</div></div></div>
@@ -216,99 +230,99 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#8aaa88">SM</div><div><div class="uname">Sophie Martin</div><div class="uemail">sophie.martin@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-green">SM</div><div><div class="uname">Sophie Martin</div><div class="uemail">sophie.martin@mail.fr</div></div></div></td>
                             <td><span class="badge b-user">Utilisateur</span></td>
                             <td><span class="badge b-active">Actif</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">12/01/2024</td>
-                            <td style="color:var(--text-muted);font-size:.82rem">Aujourd'hui</td>
+                            <td class="td-muted">12/01/2024</td>
+                            <td class="td-muted">Aujourd'hui</td>
                             <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#b85450">MD</div><div><div class="uname">Marc Dupont</div><div class="uemail">marc.dupont@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-red">MD</div><div><div class="uname">Marc Dupont</div><div class="uemail">marc.dupont@mail.fr</div></div></div></td>
                             <td><span class="badge b-user">Utilisateur</span></td>
                             <td><span class="badge b-suspended">Suspendu</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">03/03/2024</td>
-                            <td style="color:var(--text-muted);font-size:.82rem">Il y a 3 jours</td>
+                            <td class="td-muted">03/03/2024</td>
+                            <td class="td-muted">Il y a 3 jours</td>
                             <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#c9866b">JL</div><div><div class="uname">Julie Lefebvre</div><div class="uemail">julie.lefebvre@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-orange">JL</div><div><div class="uname">Julie Lefebvre</div><div class="uemail">julie.lefebvre@mail.fr</div></div></div></td>
                             <td><span class="badge b-admin">Admin</span></td>
                             <td><span class="badge b-active">Actif</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">15/11/2023</td>
-                            <td style="color:var(--text-muted);font-size:.82rem">Hier</td>
+                            <td class="td-muted">15/11/2023</td>
+                            <td class="td-muted">Hier</td>
                             <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#4e6e4c">TB</div><div><div class="uname">Thomas Bernard</div><div class="uemail">thomas.b@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-dark">TB</div><div><div class="uname">Thomas Bernard</div><div class="uemail">thomas.b@mail.fr</div></div></div></td>
                             <td><span class="badge b-user">Utilisateur</span></td>
                             <td><span class="badge b-active">Actif</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">08/05/2024</td>
-                            <td style="color:var(--text-muted);font-size:.82rem">Il y a 2 jours</td>
+                            <td class="td-muted">08/05/2024</td>
+                            <td class="td-muted">Il y a 2 jours</td>
                             <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#b8892a">ER</div><div><div class="uname">Emma Rousseau</div><div class="uemail">emma.r@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-yellow">ER</div><div><div class="uname">Emma Rousseau</div><div class="uemail">emma.r@mail.fr</div></div></div></td>
                             <td><span class="badge b-user">Utilisateur</span></td>
                             <td><span class="badge b-inactive">Inactif</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">22/07/2023</td>
-                            <td style="color:var(--text-muted);font-size:.82rem">Il y a 30 jours</td>
+                            <td class="td-muted">22/07/2023</td>
+                            <td class="td-muted">Il y a 30 jours</td>
                             <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#8aaa88">LP</div><div><div class="uname">Lucas Petit</div><div class="uemail">lucas.p@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-green">LP</div><div><div class="uname">Lucas Petit</div><div class="uemail">lucas.p@mail.fr</div></div></div></td>
                             <td><span class="badge b-user">Utilisateur</span></td>
                             <td><span class="badge b-active">Actif</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">01/02/2024</td>
-                            <td style="color:var(--text-muted);font-size:.82rem">Aujourd'hui</td>
+                            <td class="td-muted">01/02/2024</td>
+                            <td class="td-muted">Aujourd'hui</td>
                             <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#c9866b">CS</div><div><div class="uname">Camille Simon</div><div class="uemail">camille.s@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-orange">CS</div><div><div class="uname">Camille Simon</div><div class="uemail">camille.s@mail.fr</div></div></div></td>
                             <td><span class="badge b-admin">Admin</span></td>
                             <td><span class="badge b-active">Actif</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">10/09/2023</td>
-                            <td style="color:var(--text-muted);font-size:.82rem">Hier</td>
+                            <td class="td-muted">10/09/2023</td>
+                            <td class="td-muted">Hier</td>
                             <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#4e6e4c">AM</div><div><div class="uname">Antoine Michel</div><div class="uemail">antoine.m@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-dark">AM</div><div><div class="uname">Antoine Michel</div><div class="uemail">antoine.m@mail.fr</div></div></div></td>
                             <td><span class="badge b-user">Utilisateur</span></td>
                             <td><span class="badge b-active">Actif</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">14/04/2024</td>
-                            <td style="color:var(--text-muted);font-size:.82rem">Il y a 5 jours</td>
+                            <td class="td-muted">14/04/2024</td>
+                            <td class="td-muted">Il y a 5 jours</td>
                             <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#b85450">LG</div><div><div class="uname">Léa Garcia</div><div class="uemail">lea.g@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-red">LG</div><div><div class="uname">Léa Garcia</div><div class="uemail">lea.g@mail.fr</div></div></div></td>
                             <td><span class="badge b-user">Utilisateur</span></td>
                             <td><span class="badge b-suspended">Suspendu</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">27/12/2023</td>
-                            <td style="color:var(--text-muted);font-size:.82rem">Il y a 15 jours</td>
+                            <td class="td-muted">27/12/2023</td>
+                            <td class="td-muted">Il y a 15 jours</td>
                             <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#8aaa88">HM</div><div><div class="uname">Hugo Martinez</div><div class="uemail">hugo.m@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-green">HM</div><div><div class="uname">Hugo Martinez</div><div class="uemail">hugo.m@mail.fr</div></div></div></td>
                             <td><span class="badge b-user">Utilisateur</span></td>
                             <td><span class="badge b-active">Actif</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">05/06/2024</td>
-                            <td style="color:var(--text-muted);font-size:.82rem">Aujourd'hui</td>
+                            <td class="td-muted">05/06/2024</td>
+                            <td class="td-muted">Aujourd'hui</td>
                             <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#b8892a">IL</div><div><div class="uname">Inès Lopez</div><div class="uemail">ines.l@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-yellow">IL</div><div><div class="uname">Inès Lopez</div><div class="uemail">ines.l@mail.fr</div></div></div></td>
                             <td><span class="badge b-user">Utilisateur</span></td>
                             <td><span class="badge b-active">Actif</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">18/08/2023</td>
-                            <td style="color:var(--text-muted);font-size:.82rem">Hier</td>
+                            <td class="td-muted">18/08/2023</td>
+                            <td class="td-muted">Hier</td>
                             <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         <tr>
-                            <td><div class="ucell"><div class="uav" style="background:#4e6e4c">ND</div><div><div class="uname">Nathan Durand</div><div class="uemail">nathan.d@mail.fr</div></div></div></td>
+                            <td><div class="ucell"><div class="uav uav-dark">ND</div><div><div class="uname">Nathan Durand</div><div class="uemail">nathan.d@mail.fr</div></div></div></td>
                             <td><span class="badge b-user">Utilisateur</span></td>
                             <td><span class="badge b-inactive">Inactif</span></td>
-                            <td style="color:var(--text-muted);font-size:.82rem">30/10/2023</td>
-                            <td style="color:var(--text-muted);font-size:.82rem">Il y a 45 jours</td>
+                            <td class="td-muted">30/10/2023</td>
+                            <td class="td-muted">Il y a 45 jours</td>
                             <td><div class="actbtns"><div class="ibtn">👁️</div><div class="ibtn">✏️</div><div class="ibtn">⚠️</div><div class="ibtn">🗑️</div></div></td>
                         </tr>
                         </tbody>
@@ -381,9 +395,294 @@
                 </div>
             </div>
 
-        </div><!-- /content -->
-    </div><!-- /main -->
-</div><!-- /layout -->
+            <!-- ══ VUE : GÉRER LES POSTS ══ -->
+            <div class="view view-posts">
+                <div class="sec-hdr">
+                    <div class="sec-title">Gestion des posts</div>
+                    <div class="toolbar-right">
+                        <div class="search-wrap">
+                            <span class="sico">🔍</span>
+                            <input class="sinput" type="text" placeholder="Rechercher un post…" />
+                        </div>
+                        <select class="fsel">
+                            <option>Tous les statuts</option>
+                            <option>Publié</option>
+                            <option>Brouillon</option>
+                            <option>Signalé</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="posts-grid">
+
+                    <div class="post-card">
+                        <div class="post-card-top"></div>
+                        <div class="post-card-body">
+                            <div class="post-meta">
+                                <div class="uav uav-green post-author-av">SM</div>
+                                <div class="post-author-name">Sophie Martin</div>
+                                <div class="post-date">14/03/2024</div>
+                            </div>
+                            <div class="post-title">Les bienfaits du jardinage urbain pour le bien-être</div>
+                            <div class="post-excerpt">De plus en plus de citadins se tournent vers le jardinage urbain pour retrouver un lien avec la nature. Cette pratique présente de nombreux avantages...</div>
+                        </div>
+                        <div class="post-card-footer">
+                            <div class="post-stats">
+                                <span class="pstat">👁️ 1 204</span>
+                                <span class="pstat">💬 18</span>
+                                <span class="pstat">❤️ 47</span>
+                            </div>
+                            <div class="post-footer-right">
+                                <span class="post-status-tag pst-published">Publié</span>
+                                <div class="post-actions">
+                                    <div class="ibtn" title="Voir le post">👁️</div>
+                                    <div class="ibtn" title="Supprimer">🗑️</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="post-card">
+                        <div class="post-card-top"></div>
+                        <div class="post-card-body">
+                            <div class="post-meta">
+                                <div class="uav uav-orange post-author-av">JL</div>
+                                <div class="post-author-name">Julie Lefebvre</div>
+                                <div class="post-date">10/03/2024</div>
+                            </div>
+                            <div class="post-title">Guide complet : démarrer la méditation en 7 étapes</div>
+                            <div class="post-excerpt">La méditation est une pratique millénaire qui connaît un regain d'intérêt dans notre société moderne. Voici comment s'y mettre facilement...</div>
+                        </div>
+                        <div class="post-card-footer">
+                            <div class="post-stats">
+                                <span class="pstat">👁️ 3 891</span>
+                                <span class="pstat">💬 34</span>
+                                <span class="pstat">❤️ 112</span>
+                            </div>
+                            <div class="post-footer-right">
+                                <span class="post-status-tag pst-published">Publié</span>
+                                <div class="post-actions">
+                                    <div class="ibtn" title="Voir le post">👁️</div>
+                                    <div class="ibtn" title="Supprimer">🗑️</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="post-card">
+                        <div class="post-card-top"></div>
+                        <div class="post-card-body">
+                            <div class="post-meta">
+                                <div class="uav uav-dark post-author-av">TB</div>
+                                <div class="post-author-name">Thomas Bernard</div>
+                                <div class="post-date">08/03/2024</div>
+                            </div>
+                            <div class="post-title">Pourquoi j'ai quitté mon CDI pour devenir freelance</div>
+                            <div class="post-excerpt">Après 5 ans en entreprise, j'ai pris la décision de me lancer à mon compte. Voici mon retour d'expérience après 6 mois de freelance...</div>
+                        </div>
+                        <div class="post-card-footer">
+                            <div class="post-stats">
+                                <span class="pstat">👁️ 5 672</span>
+                                <span class="pstat">💬 62</span>
+                                <span class="pstat">❤️ 204</span>
+                            </div>
+                            <div class="post-footer-right">
+                                <span class="post-status-tag pst-flagged">Signalé</span>
+                                <div class="post-actions">
+                                    <div class="ibtn" title="Voir le post">👁️</div>
+                                    <div class="ibtn" title="Supprimer">🗑️</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="post-card">
+                        <div class="post-card-top"></div>
+                        <div class="post-card-body">
+                            <div class="post-meta">
+                                <div class="uav uav-yellow post-author-av">ER</div>
+                                <div class="post-author-name">Emma Rousseau</div>
+                                <div class="post-date">05/03/2024</div>
+                            </div>
+                            <div class="post-title">Recettes zéro déchet pour un quotidien plus durable</div>
+                            <div class="post-excerpt">Adopter un mode de vie zéro déchet n'implique pas de tout révolutionner d'un coup. Ces recettes simples vous permettront de commencer en douceur...</div>
+                        </div>
+                        <div class="post-card-footer">
+                            <div class="post-stats">
+                                <span class="pstat">👁️ 987</span>
+                                <span class="pstat">💬 9</span>
+                                <span class="pstat">❤️ 31</span>
+                            </div>
+                            <div class="post-footer-right">
+                                <span class="post-status-tag pst-draft">Brouillon</span>
+                                <div class="post-actions">
+                                    <div class="ibtn" title="Voir le post">👁️</div>
+                                    <div class="ibtn" title="Supprimer">🗑️</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="post-card">
+                        <div class="post-card-top"></div>
+                        <div class="post-card-body">
+                            <div class="post-meta">
+                                <div class="uav uav-green post-author-av">LP</div>
+                                <div class="post-author-name">Lucas Petit</div>
+                                <div class="post-date">02/03/2024</div>
+                            </div>
+                            <div class="post-title">Tour du monde en 365 jours : bilan et conseils</div>
+                            <div class="post-excerpt">Il y a un an, je bouclais mon sac à dos et partais pour l'aventure de ma vie. Retour sur cette expérience hors du commun et les leçons tirées...</div>
+                        </div>
+                        <div class="post-card-footer">
+                            <div class="post-stats">
+                                <span class="pstat">👁️ 8 443</span>
+                                <span class="pstat">💬 87</span>
+                                <span class="pstat">❤️ 316</span>
+                            </div>
+                            <div class="post-footer-right">
+                                <span class="post-status-tag pst-published">Publié</span>
+                                <div class="post-actions">
+                                    <div class="ibtn" title="Voir le post">👁️</div>
+                                    <div class="ibtn" title="Supprimer">🗑️</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="post-card">
+                        <div class="post-card-top"></div>
+                        <div class="post-card-body">
+                            <div class="post-meta">
+                                <div class="uav uav-orange post-author-av">CS</div>
+                                <div class="post-author-name">Camille Simon</div>
+                                <div class="post-date">28/02/2024</div>
+                            </div>
+                            <div class="post-title">Intelligence artificielle : menace ou opportunité pour les créatifs ?</div>
+                            <div class="post-excerpt">L'essor de l'IA générative soulève des questions fondamentales pour les artistes, designers et écrivains. Analyse nuancée d'un débat qui divise...</div>
+                        </div>
+                        <div class="post-card-footer">
+                            <div class="post-stats">
+                                <span class="pstat">👁️ 2 310</span>
+                                <span class="pstat">💬 41</span>
+                                <span class="pstat">❤️ 88</span>
+                            </div>
+                            <div class="post-footer-right">
+                                <span class="post-status-tag pst-published">Publié</span>
+                                <div class="post-actions">
+                                    <div class="ibtn" title="Voir le post">👁️</div>
+                                    <div class="ibtn" title="Supprimer">🗑️</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ══ VUE : GÉRER LES COMMENTAIRES ══ -->
+            <div class="view view-comments">
+                <div class="sec-hdr">
+                    <div class="sec-title">Gestion des commentaires</div>
+                    <div class="toolbar-right">
+                        <div class="search-wrap">
+                            <span class="sico">🔍</span>
+                            <input class="sinput" type="text" placeholder="Rechercher un commentaire…" />
+                        </div>
+                        <select class="fsel">
+                            <option>Tous les statuts</option>
+                            <option>Approuvé</option>
+                            <option>En attente</option>
+                            <option>Signalé</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="tcard">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Auteur</th>
+                            <th>Commentaire</th>
+                            <th>Post associé</th>
+                            <th>Statut</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><div class="ucell"><div class="uav uav-green">SM</div><div><div class="uname">Sophie Martin</div><div class="uemail">sophie.martin@mail.fr</div></div></div></td>
+                            <td><div class="comment-text">Super article, j'ai vraiment appris beaucoup de choses sur ce sujet. Merci pour le partage !</div></td>
+                            <td><span class="comment-post-ref">Guide complet : méditation en 7 étapes</span></td>
+                            <td><span class="badge b-active">Approuvé</span></td>
+                            <td class="td-muted td-nowrap">14/03/2024</td>
+                            <td><div class="actbtns"><div class="ibtn" title="Voir">👁️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav uav-red">MD</div><div><div class="uname">Marc Dupont</div><div class="uemail">marc.dupont@mail.fr</div></div></div></td>
+                            <td><div class="comment-text">Je ne suis pas du tout d'accord avec ce point de vue. C'est complètement faux et trompeur !</div></td>
+                            <td><span class="comment-post-ref">Pourquoi j'ai quitté mon CDI pour le freelance</span></td>
+                            <td><span class="badge b-suspended">Signalé</span></td>
+                            <td class="td-muted td-nowrap">12/03/2024</td>
+                            <td><div class="actbtns"><div class="ibtn" title="Voir">👁️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav uav-orange">JL</div><div><div class="uname">Julie Lefebvre</div><div class="uemail">julie.lefebvre@mail.fr</div></div></div></td>
+                            <td><div class="comment-text">Excellent contenu comme toujours. J'attends avec impatience la suite de cette série d'articles !</div></td>
+                            <td><span class="comment-post-ref">Tour du monde en 365 jours</span></td>
+                            <td><span class="badge b-active">Approuvé</span></td>
+                            <td class="td-muted td-nowrap">10/03/2024</td>
+                            <td><div class="actbtns"><div class="ibtn" title="Voir">👁️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav uav-dark">TB</div><div><div class="uname">Thomas Bernard</div><div class="uemail">thomas.b@mail.fr</div></div></div></td>
+                            <td><div class="comment-text">J'aurais aimé plus de détails sur la partie technique. Est-ce que tu prévois un article dédié ?</div></td>
+                            <td><span class="comment-post-ref">Intelligence artificielle : menace ou opportunité</span></td>
+                            <td><span class="badge b-inactive">En attente</span></td>
+                            <td class="td-muted td-nowrap">09/03/2024</td>
+                            <td><div class="actbtns"><div class="ibtn" title="Voir">👁️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav uav-yellow">ER</div><div><div class="uname">Emma Rousseau</div><div class="uemail">emma.r@mail.fr</div></div></div></td>
+                            <td><div class="comment-text">Ces recettes sont vraiment inspirantes. Je les ai toutes testées et le résultat est au-delà de mes attentes !</div></td>
+                            <td><span class="comment-post-ref">Recettes zéro déchet pour un quotidien durable</span></td>
+                            <td><span class="badge b-active">Approuvé</span></td>
+                            <td class="td-muted td-nowrap">07/03/2024</td>
+                            <td><div class="actbtns"><div class="ibtn" title="Voir">👁️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav uav-green">LP</div><div><div class="uname">Lucas Petit</div><div class="uemail">lucas.p@mail.fr</div></div></div></td>
+                            <td><div class="comment-text">Contenu promotionnel déguisé, cliquez sur mon lien pour gagner de l'argent facilement...</div></td>
+                            <td><span class="comment-post-ref">Les bienfaits du jardinage urbain</span></td>
+                            <td><span class="badge b-suspended">Signalé</span></td>
+                            <td class="td-muted td-nowrap">06/03/2024</td>
+                            <td><div class="actbtns"><div class="ibtn" title="Voir">👁️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav uav-orange">CS</div><div><div class="uname">Camille Simon</div><div class="uemail">camille.s@mail.fr</div></div></div></td>
+                            <td><div class="comment-text">Très belle rédaction. Le style est fluide et les arguments bien construits, bravo !</div></td>
+                            <td><span class="comment-post-ref">Tour du monde en 365 jours</span></td>
+                            <td><span class="badge b-active">Approuvé</span></td>
+                            <td class="td-muted td-nowrap">04/03/2024</td>
+                            <td><div class="actbtns"><div class="ibtn" title="Voir">👁️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                        </tr>
+                        <tr>
+                            <td><div class="ucell"><div class="uav uav-dark">AM</div><div><div class="uname">Antoine Michel</div><div class="uemail">antoine.m@mail.fr</div></div></div></td>
+                            <td><div class="comment-text">Merci pour cet éclairage, mais je pense que vous avez oublié de mentionner un aspect important…</div></td>
+                            <td><span class="comment-post-ref">Intelligence artificielle : menace ou opportunité</span></td>
+                            <td><span class="badge b-inactive">En attente</span></td>
+                            <td class="td-muted td-nowrap">02/03/2024</td>
+                            <td><div class="actbtns"><div class="ibtn" title="Voir">👁️</div><div class="ibtn" title="Supprimer">🗑️</div></div></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

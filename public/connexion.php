@@ -1,9 +1,8 @@
 <?php
 
 session_start();
-
-require_once(__DIR__ . '/../source/fonctions/authentification.php');
 require_once(__DIR__ . '/../config.php');
+require_once(__DIR__ . '/../source/fonctions/authentification.php');
 
 $erreurs = $_SESSION['erreurs'] ?? [];
 $valeurs = $_SESSION['valeurs'] ?? ['identifiant' => ''];

@@ -16,7 +16,7 @@ function estConnecte(): bool
 {
     if (
         empty($_SESSION['logged_in']) ||
-        empty($_SESSION['user_id']) ||
+        empty($_SESSION['id_utilisateur']) ||
         empty($_SESSION['login_time'])
     ) {
         return false;
@@ -39,7 +39,7 @@ function exigerConnexion(): void
 {
     if (!estConnecte()) {
         $_SESSION['erreurs'] = ["Veuillez vous connecter pour accéder à cette page."];
-        header('Location: ../public/connexion.php');
+        header('Location: ' . BASE_URL . '/public/connexion.php');
         exit;
     }
 }
@@ -64,9 +64,6 @@ function deconnecterUtilisateur(): void
 
     session_destroy();
 
-}
-function estAdmin(): bool {
-    return isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
 }
 
 

@@ -1,7 +1,6 @@
 <?php
-
-require_once(__DIR__ . '/../source/fonctions/authentification.php');
 require_once(__DIR__ . '/../config.php');
+require_once(__DIR__ . '/../source/fonctions/authentification.php');
 $pdo = require_once(ROOT . '/source/bdd/connexion_bdd.php');
 
 function verifToken(string $token): bool {
@@ -50,7 +49,7 @@ if (empty($erreurs)){
         }else{
             session_regenerate_id(true); //apres la connexion recreer une autre session pour securoité
 
-            $_SESSION['id_utilisateur'] = $utilisateurs['id'];
+            $_SESSION['id_utilisateur'] = $utilisateurs['id_utilisateur'];
             $_SESSION['pseudo'] = $utilisateurs['pseudo'];
             $_SESSION['email'] = $utilisateurs['email'];
             $_SESSION['role']= $utilisateurs['role'];
@@ -75,5 +74,5 @@ if (empty($erreurs)){
 $_SESSION['erreurs'] = $erreurs;
 $_SESSION['valeurs'] = $valeurs;
 
-header('Location: /index.php');
+header('Location: ' . BASE_URL . '/public/connexion.php');
 exit;

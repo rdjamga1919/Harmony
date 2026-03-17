@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '/../source/bdd/connexion_bdd.php');
+require_once(__DIR__ . '/../source/bdd/connexion_bdd_jordan.php');
 
 $tri = isset($_GET['tri']) && $_GET['tri'] === 'asc' ? 'ASC' : 'DESC';
 $sql = "SELECT * FROM poste ORDER BY date_poste $tri";

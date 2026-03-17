@@ -1,4 +1,4 @@
-<?php require_once(__DIR__ . '/../source/bdd/connexion_bdd.php'); ?>
+<?php require_once(__DIR__ . '/../source/bdd/connexion_bdd_jordan.php'); ?>
 
 <!DOCTYPE html>
 <html lang="fr">

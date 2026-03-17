@@ -13,7 +13,7 @@ $posts = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <title>Forum</title>
-    <link rel="stylesheet" href="forum.css">
+    <link rel="stylesheet" href="../ressources/css/forum.css">
 </head>
 
 <body>

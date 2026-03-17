@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Créer un post</title>
-    <link rel="stylesheet" href="forum.css">
+    <link rel="stylesheet" href="../ressources/css/forum.css">
 </head>
 
 <body>

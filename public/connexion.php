@@ -7,7 +7,7 @@ require_once(__DIR__ . '/../config.php');
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="connexion.css">
+    <link rel="stylesheet" href="../ressources/css/connexion.css">
 </head>
 <body>
 <?php include '../source/inclue/header.php'?>

@@ -8,7 +8,7 @@ require_once(__DIR__ . '/../config.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>À propos — Campus Bien-être</title>
-    <link rel="stylesheet" href="apropos.css">
+    <link rel="stylesheet" href="../ressources/css/apropos.css">
 </head>
 <body>
 <?php include '../source/inclue/header.php'?>

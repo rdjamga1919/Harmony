@@ -9,4 +9,3 @@ if(isset($_POST['id_poste'])){
 
 header("Location: ../public/forum.php");
 exit();
-?>

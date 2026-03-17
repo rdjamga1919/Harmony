@@ -309,6 +309,8 @@ body {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .sec-title {
@@ -350,6 +352,13 @@ body {
     gap: 12px;
     flex-wrap: wrap;
     background: var(--cream);
+}
+
+.toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 /* ══════════════════════════════════════
@@ -413,10 +422,31 @@ td {
     border-bottom: 1px solid var(--linen-light);
     font-size: 0.875rem;
     color: var(--text-main);
+    vertical-align: middle;
 }
 
 tbody tr:last-child td { border-bottom: none; }
 tbody tr:hover { background: rgba(197,217,194,0.09); }
+
+.td-muted { color: var(--text-muted); font-size: 0.82rem; }
+.td-nowrap { white-space: nowrap; }
+
+/* ══════════════════════════════════════
+   ID BADGE
+══════════════════════════════════════ */
+.id-badge {
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--cream-dark);
+    border: 1px solid var(--linen);
+    border-radius: 6px;
+    padding: 3px 8px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+}
 
 /* ══════════════════════════════════════
    USER CELL
@@ -433,8 +463,23 @@ tbody tr:hover { background: rgba(197,217,194,0.09); }
     flex-shrink: 0;
 }
 
+/* Smaller avatar variant for table rows */
+.uav-sm {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+    border-radius: 50%;
+}
+
 .uname  { font-weight: 500; font-size: 0.87rem; }
 .uemail { font-size: 0.76rem; color: var(--text-muted); margin-top: 1px; }
+
+/* Avatar colors */
+.uav-green  { background: linear-gradient(135deg, var(--success), #7ab87a); }
+.uav-red    { background: linear-gradient(135deg, var(--danger), #d4807c); }
+.uav-orange { background: linear-gradient(135deg, var(--accent), var(--accent-dark)); }
+.uav-dark   { background: linear-gradient(135deg, #5a554f, #3a352f); }
+.uav-yellow { background: linear-gradient(135deg, var(--warning), #d4a94a); }
 
 /* ══════════════════════════════════════
    BADGES
@@ -456,6 +501,11 @@ tbody tr:hover { background: rgba(197,217,194,0.09); }
 .b-admin     { background: var(--accent-light);        color: var(--accent-dark);border: 1px solid rgba(201,134,107,0.3); }
 .b-user      { background: rgba(138,170,136,0.12);     color: var(--sage-dark);  border: 1px solid rgba(138,170,136,0.3); }
 
+/* Post-specific status badges */
+.b-published { background: var(--success-bg);        color: var(--success);    border: 1px solid rgba(90,138,90,0.25); }
+.b-draft     { background: var(--cream-dark);         color: var(--text-muted); border: 1px solid var(--linen); }
+.b-flagged   { background: var(--warning-bg);         color: var(--warning);    border: 1px solid rgba(184,137,42,0.3); }
+
 /* ══════════════════════════════════════
    ACTION BUTTONS
 ══════════════════════════════════════ */
@@ -471,9 +521,77 @@ tbody tr:hover { background: rgba(197,217,194,0.09); }
     font-size: 0.78rem;
     text-decoration: none;
     cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
 }
 
 .ibtn:hover { background: var(--linen); color: var(--text-main); }
+
+.ibtn-view:hover { background: rgba(138,170,136,0.18); border-color: rgba(138,170,136,0.4); }
+.ibtn-delete:hover { background: var(--danger-bg); border-color: rgba(184,84,80,0.3); }
+
+/* ══════════════════════════════════════
+   POST TABLE CELLS
+══════════════════════════════════════ */
+.post-title-cell {
+    max-width: 300px;
+}
+
+.post-title-main {
+    font-weight: 500;
+    font-size: 0.87rem;
+    color: var(--text-main);
+    line-height: 1.35;
+    margin-bottom: 4px;
+}
+
+.post-title-stats {
+    display: flex;
+    gap: 10px;
+}
+
+.pstat-sm {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.comment-count {
+    font-size: 0.84rem;
+    color: var(--sage-dark);
+    font-weight: 500;
+    background: rgba(138,170,136,0.12);
+    border: 1px solid rgba(138,170,136,0.25);
+    border-radius: 99px;
+    padding: 3px 10px;
+    white-space: nowrap;
+}
+
+/* ══════════════════════════════════════
+   COMMENT TABLE CELLS
+══════════════════════════════════════ */
+.comment-text {
+    font-size: 0.84rem;
+    color: var(--text-main);
+    max-width: 280px;
+    line-height: 1.45;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.comment-post-ref {
+    font-size: 0.78rem;
+    color: var(--sage-dark);
+    background: rgba(138,170,136,0.1);
+    border: 1px solid rgba(138,170,136,0.22);
+    border-radius: 6px;
+    padding: 3px 9px;
+    display: inline-block;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 /* ══════════════════════════════════════
    ACTIVITY
@@ -589,12 +707,16 @@ tbody tr:hover { background: rgba(197,217,194,0.09); }
 #tab-dashboard:checked ~ .layout .view-dashboard,
 #tab-users:checked    ~ .layout .view-users,
 #tab-admin:checked    ~ .layout .view-admin,
-#tab-activity:checked ~ .layout .view-activity { display: block; }
+#tab-activity:checked ~ .layout .view-activity,
+#tab-posts:checked    ~ .layout .view-posts,
+#tab-comments:checked ~ .layout .view-comments { display: block; }
 
 #tab-dashboard:checked ~ .layout label[for="tab-dashboard"],
 #tab-users:checked     ~ .layout label[for="tab-users"],
 #tab-admin:checked     ~ .layout label[for="tab-admin"],
-#tab-activity:checked  ~ .layout label[for="tab-activity"] {
+#tab-activity:checked  ~ .layout label[for="tab-activity"],
+#tab-posts:checked     ~ .layout label[for="tab-posts"],
+#tab-comments:checked  ~ .layout label[for="tab-comments"] {
     background: linear-gradient(135deg, rgba(138,170,136,0.18), rgba(201,134,107,0.08));
     color: var(--sage-dark);
     font-weight: 500;
@@ -604,7 +726,9 @@ tbody tr:hover { background: rgba(197,217,194,0.09); }
 #tab-dashboard:checked ~ .layout .title-dashboard,
 #tab-users:checked     ~ .layout .title-users,
 #tab-admin:checked     ~ .layout .title-admin,
-#tab-activity:checked  ~ .layout .title-activity { display: block; }
+#tab-activity:checked  ~ .layout .title-activity,
+#tab-posts:checked     ~ .layout .title-posts,
+#tab-comments:checked  ~ .layout .title-comments { display: block; }
 
 .topbar-title span { display: none; }
 .topbar-title span:first-child { display: block; }
@@ -630,4 +754,185 @@ tbody tr:hover { background: rgba(197,217,194,0.09); }
     .fg.full { grid-column: 1; }
     .content { padding: 18px; }
     .topbar  { padding: 0 18px; }
+    .post-title-cell { max-width: 180px; }
+    .comment-text { max-width: 160px; }
+    .comment-post-ref { max-width: 130px; }
 }
+
+/* ══════════════════════════════════════
+   TOOLBAR RIGHT (posts / comments)
+══════════════════════════════════════ */
+.toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ══════════════════════════════════════
+   ID BADGE
+══════════════════════════════════════ */
+.id-badge {
+    display: inline-block;
+    font-family: 'Courier New', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--cream-dark);
+    border: 1px solid var(--linen);
+    border-radius: var(--radius-sm);
+    padding: 3px 8px;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+}
+
+/* ══════════════════════════════════════
+   POST TITLE CELL
+══════════════════════════════════════ */
+.post-title-cell {
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--text-main);
+    max-width: 280px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ══════════════════════════════════════
+   AVATAR SMALL
+══════════════════════════════════════ */
+.uav.uav-sm {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.72rem !important;
+    border-radius: 50% !important;
+}
+
+/* ══════════════════════════════════════
+   POST STATUS BADGES (table version)
+══════════════════════════════════════ */
+.pst-badge {
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 99px;
+    white-space: nowrap;
+}
+
+.pst-published {
+    background: var(--success-bg);
+    color: var(--success);
+    border: 1px solid rgba(90,138,90,0.25);
+}
+
+.pst-draft {
+    background: var(--cream-dark);
+    color: var(--text-muted);
+    border: 1px solid var(--linen);
+}
+
+.pst-flagged {
+    background: var(--warning-bg);
+    color: var(--warning);
+    border: 1px solid rgba(184,137,42,0.25);
+}
+
+/* ══════════════════════════════════════
+   COMMENT COUNT
+══════════════════════════════════════ */
+.comment-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    background: rgba(138,170,136,0.10);
+    border: 1px solid rgba(138,170,136,0.22);
+    padding: 3px 10px;
+    border-radius: 99px;
+}
+
+/* ══════════════════════════════════════
+   COMMENT TEXT (table)
+══════════════════════════════════════ */
+.comment-text {
+    font-size: 0.84rem;
+    color: var(--text-main);
+    max-width: 260px;
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.comment-text.comment-flagged {
+    color: var(--danger);
+    background: var(--danger-bg);
+    border-left: 3px solid var(--danger);
+    border-radius: 0 4px 4px 0;
+    padding: 4px 8px;
+}
+
+/* ══════════════════════════════════════
+   COMMENT POST REF
+══════════════════════════════════════ */
+.comment-post-ref {
+    display: inline-block;
+    font-size: 0.76rem;
+    color: var(--sage-dark);
+    background: rgba(138,170,136,0.10);
+    border: 1px solid rgba(138,170,136,0.25);
+    border-radius: var(--radius-sm);
+    padding: 3px 9px;
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ══════════════════════════════════════
+   IBTN DANGER
+══════════════════════════════════════ */
+.ibtn.ibtn-danger {
+    border-color: rgba(184,84,80,0.2);
+    background: var(--danger-bg);
+    color: var(--danger);
+}
+.ibtn.ibtn-danger:hover {
+    background: var(--danger);
+    color: var(--white);
+    border-color: var(--danger);
+}
+
+/* ══════════════════════════════════════
+   MISC TABLE HELPERS
+══════════════════════════════════════ */
+.td-muted  { color: var(--text-muted); font-size: 0.82rem; }
+.td-nowrap { white-space: nowrap; }
+
+/* ══════════════════════════════════════
+   POSTS / COMMENTS TAB ACTIVE STATES
+══════════════════════════════════════ */
+#tab-posts:checked    ~ .layout .view-posts    { display: block; }
+#tab-comments:checked ~ .layout .view-comments { display: block; }
+
+#tab-posts:checked    ~ .layout label[for="tab-posts"] {
+    background: linear-gradient(135deg, rgba(138,170,136,0.18), rgba(201,134,107,0.08));
+    color: var(--sage-dark);
+    font-weight: 500;
+    border-color: rgba(138,170,136,0.3);
+}
+#tab-comments:checked ~ .layout label[for="tab-comments"] {
+    background: linear-gradient(135deg, rgba(138,170,136,0.18), rgba(201,134,107,0.08));
+    color: var(--sage-dark);
+    font-weight: 500;
+    border-color: rgba(138,170,136,0.3);
+}
+
+#tab-posts:checked    ~ .layout .title-posts    { display: block; }
+#tab-comments:checked ~ .layout .title-comments { display: block; }

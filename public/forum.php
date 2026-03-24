@@ -1,4 +1,7 @@
 <?php
+session_start();
+require_once(__DIR__ . '/../source/bdd/connexion_bdd_jordan.php');
+// ... reste du fichier
 require_once(__DIR__ . '/../source/bdd/connexion_bdd_jordan.php');
 
 $tri = isset($_GET['tri']) && $_GET['tri'] === 'asc' ? 'ASC' : 'DESC';
@@ -39,7 +42,7 @@ $posts = $stmt->fetchAll();
     <?php } else { ?>
         <?php foreach($posts as $post){ ?>
             <div class="post-card">
-                <h3><?php echo htmlspecialchars($post['titre']); ?></h3>
+                <h3><a href="detail_post.php?id=<?php echo $post['id_poste']; ?>"><?php echo htmlspecialchars($post['titre']); ?></a></h3>
                 <p><?php echo nl2br(htmlspecialchars($post['contenu'])); ?></p>
                 <form action="../traitement/supprimer_post.php" method="POST">
                     <input type="hidden" name="id_poste" value="<?php echo $post['id_poste']; ?>">

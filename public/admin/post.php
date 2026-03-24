@@ -45,124 +45,188 @@ function e(string $value): string {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Posts</title>
+    <link rel="stylesheet" href="../../ressources/css/dashboard.css">
 </head>
 <body>
 
-<header>
-    <h1>Gestion des posts</h1>
-    <p>Consultez et modérez les publications du forum.</p>
-</header>
+<div class="layout">
 
-<main>
+    <aside class="sidebar">
+        <div class="sidebar-stripe"></div>
 
-    <section>
-        <h2>Actions rapides</h2>
-        <p><a href="dashboard.php">← Retour au tableau de bord</a></p>
-    </section>
-
-    <?php if (!empty($succes)): ?>
-        <div>
-            <?php foreach ($succes as $message): ?>
-                <p style="color: green;"><?= e($message) ?></p>
-            <?php endforeach; ?>
+        <div class="sidebar-logo">
+            <div class="brand">⬡ Harmony</div>
+            <div class="tagline">Panneau de contrôle</div>
         </div>
-    <?php endif; ?>
 
-    <?php if (!empty($erreurs)): ?>
-        <div>
-            <?php foreach ($erreurs as $message): ?>
-                <p style="color: red;"><?= e($message) ?></p>
-            <?php endforeach; ?>
+        <nav class="sidebar-nav">
+            <div class="nav-label">Principal</div>
+            <a class="nav-item" href="dashboard.php">
+                <span class="ico">🏠</span> Tableau de bord
+            </a>
+            <a class="nav-item" href="utilisateur.php">
+                <span class="ico">👥</span> Gérer les utilisateurs
+            </a>
+
+            <div class="nav-label">Contenu</div>
+            <a class="nav-item active" href="post.php">
+                <span class="ico">📝</span> Gérer les posts
+            </a>
+            <a class="nav-item" href="commentaires.php">
+                <span class="ico">💬</span> Gérer les commentaires
+            </a>
+
+            <div class="nav-label">Administration</div>
+            <a class="nav-item" href="ajouter_admin.php">
+                <span class="ico">🛡️</span> Ajouter un admin
+            </a>
+            <a class="nav-item" href="activite.php">
+                <span class="ico">📋</span> Journal d'activité
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="admin-card">
+                <div class="av">AD</div>
+                <div class="admin-info">
+                    <div class="name">Administrateur</div>
+                    <div class="role">Espace admin</div>
+                </div>
+            </div>
         </div>
-    <?php endif; ?>
+    </aside>
 
-    <section>
-        <h2>Liste des posts</h2>
+    <div class="main">
 
-        <table border="1" cellpadding="10" cellspacing="0">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Titre</th>
-                <th>Auteur</th>
-                <th>Date</th>
-                <th>Commentaires</th>
-                <th>Action</th>
-            </tr>
-            </thead>
+        <header class="topbar">
+            <div class="topbar-title">Gestion des posts</div>
 
-            <tbody>
+            <div class="topbar-actions">
+                <a class="btn btn-ghost btn-sm" href="dashboard.php">← Dashboard</a>
+                <a class="btn btn-ghost btn-sm" href="../../index.php">Retour au site</a>
 
-            <?php if (!empty($posts)): ?>
+                <form action="../../traitement/deconnexion.php" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger btn-sm">⏻ Déconnexion</button>
+                </form>
+            </div>
+        </header>
 
-                <?php foreach ($posts as $post): ?>
+        <div class="content">
 
-                    <tr>
+            <div class="sec-hdr">
+                <div class="sec-title">Liste des posts</div>
+            </div>
 
-                        <td><?= e($post['id_poste']) ?></td>
-
-                        <td><?= e($post['titre']) ?></td>
-
-                        <td><?= e($post['pseudo']) ?></td>
-
-                        <td><?= e($post['date_poste']) ?></td>
-
-                        <td><?= e($post['nb_commentaires']) ?></td>
-
-                        <td>
-
-                            <form action="../../traitement/admin/supprimer_post.php"
-                                  method="post"
-                                  style="display:inline;"
-                                  onsubmit="return confirm('Voulez-vous vraiment supprimer ce post ?');">
-
-                                <input type="hidden"
-                                       name="id_poste"
-                                       value="<?= e($post['id_poste']) ?>">
-
-                                <button type="submit">Supprimer</button>
-
-                            </form>
-
-                        </td>
-
-                    </tr>
-
-                <?php endforeach; ?>
-
-            <?php else: ?>
-
-                <tr>
-                    <td colspan="6">Aucun post trouvé.</td>
-                </tr>
-
+            <?php if (!empty($succes)): ?>
+                <div class="tcard" style="padding: 16px; margin-bottom: 16px; border-left: 4px solid var(--success);">
+                    <?php foreach ($succes as $message): ?>
+                        <p style="color: var(--success); margin-bottom: 6px;"><?= e($message) ?></p>
+                    <?php endforeach; ?>
+                </div>
             <?php endif; ?>
 
-            </tbody>
+            <?php if (!empty($erreurs)): ?>
+                <div class="tcard" style="padding: 16px; margin-bottom: 16px; border-left: 4px solid var(--danger);">
+                    <?php foreach ($erreurs as $message): ?>
+                        <p style="color: var(--danger); margin-bottom: 6px;"><?= e($message) ?></p>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
 
-        </table>
+            <div class="tcard">
+                <div class="ttoolbar">
+                    <div class="toolbar-right">
+                        <a class="btn btn-ghost btn-sm" href="dashboard.php">← Retour au tableau de bord</a>
+                    </div>
+                </div>
 
-    </section>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Titre</th>
+                        <th>Auteur</th>
+                        <th>Date</th>
+                        <th>Commentaires</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
 
-    <section>
-        <h2>Navigation</h2>
-        <p><a href="../../index.php">Retour au site</a></p>
-    </section>
+                    <tbody>
+                    <?php if (!empty($posts)): ?>
+                        <?php foreach ($posts as $post): ?>
+                            <?php
+                            $pseudo = $post['pseudo'];
+                            $initiales = strtoupper(substr($pseudo, 0, 2));
 
-    <form action="../../traitement/deconnexion.php" method="post">
-        <button type="submit">Se déconnecter</button>
-    </form>
+                            $couleurs = ['uav-green', 'uav-orange', 'uav-dark', 'uav-yellow'];
+                            $avatarClass = $couleurs[((int)$post['id_poste']) % count($couleurs)];
+                            ?>
+                            <tr>
+                                <td>
+                                    <span class="id-badge">#P<?= e((string)$post['id_poste']) ?></span>
+                                </td>
 
-</main>
+                                <td>
+                                    <div class="post-title-cell">
+                                        <?= e($post['titre']) ?>
+                                    </div>
+                                </td>
 
-<footer>
-</footer>
+                                <td>
+                                    <div class="ucell">
+                                        <div class="uav uav-sm <?= $avatarClass ?>">
+                                            <?= e($initiales) ?>
+                                        </div>
+                                        <div class="uname" style="font-size:.82rem;">
+                                            <?= e($pseudo) ?>
+                                        </div>
+                                    </div>
+                                </td>
+
+                                <td class="td-muted td-nowrap">
+                                    <?= e($post['date_poste']) ?>
+                                </td>
+
+                                <td>
+                                    <span class="comment-count">💬 <?= e((string)$post['nb_commentaires']) ?></span>
+                                </td>
+
+                                <td>
+                                    <div class="actbtns">
+                                        <form action="../../traitement/admin/supprimer_post.php"
+                                              method="post"
+                                              style="display:inline;"
+                                              onsubmit="return confirm('Voulez-vous vraiment supprimer ce post ?');">
+                                            <input type="hidden"
+                                                   name="id_poste"
+                                                   value="<?= e((string)$post['id_poste']) ?>">
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                🗑️ Supprimer
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="6" class="td-muted">Aucun post trouvé.</td>
+                        </tr>
+                    <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

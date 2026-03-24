@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . '/../config.php');
-
+require_once(__DIR__ . '/../source/fonctions/authentification.php');
+$pdo = require_once(ROOT . '/source/bdd/connexion_bdd.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $titre = trim($_POST['titre'] ?? '');

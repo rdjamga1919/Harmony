@@ -1,15 +1,13 @@
 <?php
-
-// cette pages jsuis vrmt pas serais j'ai demandé de tester des trucs de fou donc si tu vois que c'est trop de la d supprime 
 require_once(__DIR__ . '/../config.php');
 require_once(__DIR__ . '/../source/fonctions/authentification.php');
-$pdo = require_once(ROOT . '/source/bdd/connexion_bdd.php');
+$pdo = require_once(__DIR__ . '/../source/bdd/connexion_bdd.php');
 
 // Récupère l'ID du post depuis l'URL
 $id_poste = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
 if (!$id_poste) {
-    header("Location: " . ROOT_URL . "/pages/forum.php");
+    header("Location: forum.php");
     exit;
 }
 
@@ -25,7 +23,7 @@ $stmt->execute([$id_poste]);
 $post = $stmt->fetch();
 
 if (!$post) {
-    header("Location: " . ROOT_URL . "/pages/forum.php?error=post_introuvable");
+    header("Location: forum.php?error=post_introuvable");
     exit;
 }
 
@@ -40,7 +38,7 @@ $stmt = $pdo->prepare("
 $stmt->execute([$id_poste]);
 $commentaires = $stmt->fetchAll();
 
-// 3. Récupérer les réactions (optionnel)
+// 3. Récupérer les réactions
 $stmt = $pdo->prepare("SELECT type, COUNT(*) as nb FROM reaction WHERE id_poste = ? GROUP BY type");
 $stmt->execute([$id_poste]);
 $reactions = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
@@ -51,15 +49,14 @@ $reactions = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 <head>
     <meta charset="UTF-8">
     <title><?= htmlspecialchars($post['titre']) ?></title>
-    <link rel="stylesheet" href="<?= ROOT_URL ?>/public/forum.css">
+    <link rel="stylesheet" href="../ressources/css/forum.css">
 </head>
 <body>
 
-<?php include ROOT . '/source/inclue/header.php'; ?>
+<?php include __DIR__ . '/../source/inclue/header.php'; ?>
 
 <div class="container" style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
 
-    <!-- Message de succès après commentaire -->
     <?php if(isset($_GET['success'])): ?>
         <p class="success">✅ Commentaire ajouté !</p>
     <?php endif; ?>
@@ -79,7 +76,6 @@ $reactions = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
         <h1><?= htmlspecialchars($post['titre']) ?></h1>
         <div class="post-content"><?= nl2br(htmlspecialchars($post['contenu'])) ?></div>
 
-        <!-- Réactions (optionnel) -->
         <div class="reactions">
             <span>🤝 Soutien : <?= $reactions['soutien'] ?? 0 ?></span>
             <span>💪 Courage : <?= $reactions['courage'] ?? 0 ?></span>
@@ -88,17 +84,17 @@ $reactions = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
     </article>
 
     <!-- FORMULAIRE COMMENTAIRE -->
-    <?php if(est_connecte()): ?>
+    <?php if(isset($_SESSION['id_utilisateur'])): ?>
         <div class="form-commentaire">
             <h3>💬 Laisser un commentaire</h3>
-            <form action="<?= ROOT_URL ?>/traitement/traitement_commentaire.php" method="POST">
+            <form action="../source/traitement/traitement_commentaire.php" method="POST">
                 <input type="hidden" name="id_poste" value="<?= $id_poste ?>">
                 <textarea name="contenu" rows="4" required placeholder="Votre réponse..."></textarea>
                 <button type="submit">Envoyer</button>
             </form>
         </div>
     <?php else: ?>
-        <p class="info">🔒 <a href="<?= ROOT_URL ?>/pages/connexion.php">Connectez-vous</a> pour commenter.</p>
+        <p class="info">🔒 <a href="connexion.php">Connectez-vous</a> pour commenter.</p>
     <?php endif; ?>
 
     <!-- LISTE DES COMMENTAIRES -->
@@ -121,7 +117,7 @@ $reactions = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
     </div>
 
     <div class="btn-wrapper-center" style="margin-top: 30px;">
-        <a href="<?= ROOT_URL ?>/pages/forum.php" class="btn-retour">← Retour au forum</a>
+        <a href="forum.php" class="btn-retour">← Retour au forum</a>
     </div>
 
 </div>

@@ -1,32 +1,44 @@
 <?php
-require_once(__DIR__ . '/../config.php');
-require_once(__DIR__ . '/../source/fonctions/authentification.php');
-$pdo = require_once(ROOT . '/source/bdd/connexion_bdd.php');
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $titre = trim($_POST['titre'] ?? '');
-    $contenu = trim($_POST['contenu'] ?? '');
+require_once(__DIR__ . '/../../config.php');
 
-    if (empty($titre) || empty($contenu)) {
-        header("Location: ../pages/creer_post.php?error=champs_obligatoires");
-        exit;
-    }
-    $id_utilisateur = $_SESSION['id_utilisateur'] ?? 1;
-    $id_categorie = $_POST['id_categorie'] ?? 1;
-    $est_anonyme = isset($_POST['est_anonyme']) ? 1 : 0;
+try {
+    $pdo = require_once(__DIR__ . '/../bdd/connexion_bdd.php');
+} catch (Exception $e) {
+    die("Erreur de connexion à la base de données.");
+}
 
-    $sql = "INSERT INTO poste (titre, contenu, id_utilisateur, id_categorie, est_anonyme) 
-    VALUES (:titre, :contenu, :id_utilisateur, :id_categorie, :est_anonyme)";
-
-    $stmt = $bdd->prepare($sql);
-    $stmt->execute([
-        ':titre' => $titre,
-        ':contenu' => $contenu,
-        ':id_utilisateur' => $id_utilisateur,
-        ':id_categorie' => $id_categorie,
-        ':est_anonyme' => $est_anonyme
-    ]);
-
-    header("Location: ../public/forum.php?success=1");
+if (!isset($_SESSION['id_utilisateur'])) {
+    header("Location: ../../public/connexion.php");
     exit;
 }
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $contenu = trim($_POST['contenu'] ?? '');
+    $id_poste = filter_input(INPUT_POST, 'id_poste', FILTER_VALIDATE_INT);
+
+    // Vérifications de sécurité
+    if (empty($contenu) || !$id_poste) {
+        header("Location: ../../public/voir_post.php?id=$id_poste&error=1");
+        exit;
+    }
+
+    $id_utilisateur = $_SESSION['id_utilisateur'];
+
+    // Insertion du commentaire
+    $stmt = $pdo->prepare("
+        INSERT INTO commentaire (contenu, id_utilisateur, id_poste) 
+        VALUES (:contenu, :id_utilisateur, :id_poste)
+    ");
+
+    $stmt->execute([
+        ':contenu' => $contenu,
+        ':id_utilisateur' => $id_utilisateur,
+        ':id_poste' => $id_poste
+    ]);
+
+    // Redirection succès
+    header("Location: ../../public/voir_post.php?id=$id_poste&success=1");
+    exit;
+}
+?>

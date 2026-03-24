@@ -75,13 +75,9 @@ $peutChangerMdp = utilisateurPeutChangerMotDePasse($pdo, $idUtilisateur);
             </div>
         <?php endif; ?>
 
-        <?php if (!empty($succes)) : ?>
+        <?php if ($succes): ?>
             <div class="message-succes">
-                <ul>
-                    <?php foreach ($succes as $message) : ?>
-                        <li><?= e($message) ?></li>
-                    <?php endforeach; ?>
-                </ul>
+                <p><?= e($succes) ?></p>
             </div>
         <?php endif; ?>
 

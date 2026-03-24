@@ -1,5 +1,8 @@
 <?php
-require_once(__DIR__ . '/../source/bdd/connexion_bdd_jordan.php');
+session_start();
+require_once(__DIR__ . '/../config.php');
+require_once(__DIR__ . '/../source/fonctions/authentification.php');
+$pdo = require_once(ROOT . '/source/bdd/connexion_bdd.php');
 
 if(isset($_POST['titre']) && isset($_POST['contenu'])){
 
@@ -11,7 +14,7 @@ if(isset($_POST['titre']) && isset($_POST['contenu'])){
     $id_categorie   = 1;
 
     $sql = "INSERT INTO poste (titre, contenu, id_utilisateur, id_categorie) VALUES (:titre, :contenu, :id_utilisateur, :id_categorie)";
-    $stmt = $bdd->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     $stmt->execute([
         'titre'          => $titre,
         'contenu'        => $contenu,

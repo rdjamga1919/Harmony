@@ -26,6 +26,7 @@ function e(string $value): string {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Se connecter sur Harmony</title>
+    <link rel="stylesheet" href="../ressources/css/forum.css">
 </head>
 <body>
 <h2>Page de connexion</h2>

@@ -24,6 +24,7 @@ function e(string $value): string {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>S'inscrire sur Harmony</title>
+    <link rel="stylesheet" href="../ressources/css/forum.css">
 </head>
 <body>
 <?php require_once ROOT . '/source/inclue/header.php'; ?>

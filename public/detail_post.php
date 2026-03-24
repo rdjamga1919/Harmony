@@ -1,7 +1,8 @@
 <?php
 session_start();
-require_once(__DIR__ . '/../source/bdd/connexion_bdd_jordan.php');
 
+require_once(__DIR__ . '/../config.php');
+$pdo = require_once(__DIR__ . '/../source/bdd/connexion_bdd.php');
 if (!isset($_GET['id'])) {
     header('Location: forum.php');
     exit();
@@ -11,7 +12,7 @@ $id = (int)$_GET['id'];
 $id_utilisateur = $_SESSION['id_utilisateur'] ?? null;
 
 // Récupérer le post
-$stmt = $bdd->prepare("SELECT * FROM poste WHERE id_poste = ?");
+$stmt = $pdo->prepare("SELECT * FROM poste WHERE id_poste = ?");
 $stmt->execute([$id]);
 $post = $stmt->fetch();
 
@@ -21,7 +22,7 @@ if (!$post) {
 }
 
 // Récupérer les réactions du post
-$stmt_r = $bdd->prepare("SELECT type, COUNT(*) as total FROM reaction WHERE id_poste = ? AND id_commentaire IS NULL GROUP BY type");
+$stmt_r = $pdo->prepare("SELECT type, COUNT(*) as total FROM reaction WHERE id_poste = ? AND id_commentaire IS NULL GROUP BY type");
 $stmt_r->execute([$id]);
 $reactions_post = [];
 foreach ($stmt_r->fetchAll() as $r) {
@@ -29,14 +30,14 @@ foreach ($stmt_r->fetchAll() as $r) {
 }
 
 // Récupérer les commentaires
-$stmt2 = $bdd->prepare("SELECT * FROM commentaire WHERE id_poste = ? ORDER BY date_commentaire ASC");
+$stmt2 = $pdo->prepare("SELECT * FROM commentaire WHERE id_poste = ? ORDER BY date_commentaire ASC");
 $stmt2->execute([$id]);
 $commentaires = $stmt2->fetchAll();
 
 // Récupérer les réactions par commentaire
 $reactions_com = [];
 foreach ($commentaires as $com) {
-    $stmt_rc = $bdd->prepare("SELECT type, COUNT(*) as total FROM reaction WHERE id_commentaire = ? GROUP BY type");
+    $stmt_rc = $pdo->prepare("SELECT type, COUNT(*) as total FROM reaction WHERE id_commentaire = ? GROUP BY type");
     $stmt_rc->execute([$com['id_commentaire']]);
     foreach ($stmt_rc->fetchAll() as $r) {
         $reactions_com[$com['id_commentaire']][$r['type']] = $r['total'];
@@ -63,7 +64,8 @@ $url_post = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
     <!-- Réactions post -->
     <div class="reactions">
         <?php foreach (['soutien' => '🤝', 'merci' => '🙏', 'courage' => '💪'] as $type => $emoji){ ?>
-            <form action="../traitement/traitement_reaction.php" method="POST" class="form-reaction">
+
+        <form action="<?= BASE_URL?>/traitement/traitement_reaction.php" method="POST">
                 <input type="hidden" name="type" value="<?php echo $type; ?>">
                 <input type="hidden" name="id_poste" value="<?php echo $id; ?>">
                 <input type="hidden" name="id_utilisateur" value="<?php echo $id_utilisateur; ?>">

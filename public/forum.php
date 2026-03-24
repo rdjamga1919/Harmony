@@ -1,7 +1,7 @@
 <?php
 session_start();
+
 require_once(__DIR__ . '/../config.php');
-require_once(__DIR__ . '/../source/bdd/connexion_bdd.php');
 
 $pdo = require_once(__DIR__ . '/../source/bdd/connexion_bdd.php');
 
@@ -9,6 +9,7 @@ $tri = isset($_GET['tri']) && $_GET['tri'] === 'asc' ? 'ASC' : 'DESC';
 $sql = "SELECT * FROM poste ORDER BY date_poste $tri";
 $stmt = $pdo->query($sql);
 $posts = $stmt->fetchAll();
+
 ?>
 
 <!DOCTYPE html>

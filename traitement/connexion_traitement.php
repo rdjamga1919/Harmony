@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once(__DIR__ . '/../config.php');
 require_once(__DIR__ . '/../source/fonctions/authentification.php');
 $pdo = require_once(ROOT . '/source/bdd/connexion_bdd.php');
@@ -37,15 +38,17 @@ if(empty($identifiant)|| empty($password)){
 
 if (empty($erreurs)){
     try {
-        $requete = $pdo->prepare("SELECT id_utilisateur, pseudo, email, mdp, role FROM utilisateur WHERE pseudo = :identifiant OR email = :identifiant LIMIT 1");
+        $requete = $pdo->prepare("SELECT id_utilisateur, pseudo, email, mdp, role, actif FROM utilisateur WHERE pseudo = :identifiant OR email = :identifiant LIMIT 1");
         $requete->execute([
             "identifiant" => $identifiant,
         ]);
 
         $utilisateurs = $requete->fetch(PDO::FETCH_ASSOC); //permet de faire un tableau associatif de donnes
 
-        if (!$utilisateurs || !password_verify($password, $utilisateurs['mdp'])) { //expliquer
+        if (!$utilisateurs || !password_verify($password, $utilisateurs['mdp'])) {
             $erreurs[] = "Identifiant ou mot de passe incorrect";
+        }elseif((int)$utilisateurs['actif'] !==1) {
+            $erreurs[] = "Votre compte a été désactivé.";
         }else{
             session_regenerate_id(true); //apres la connexion recreer une autre session pour securoité
 
@@ -67,6 +70,7 @@ if (empty($erreurs)){
             exit;
         }
     }catch(PDOException $e){
+        error_log("Erreur connexion : " . $e->getMessage());
         $erreurs[] = "Erreurs lors de la connexion. Veuillez réessayer";
     }
 }

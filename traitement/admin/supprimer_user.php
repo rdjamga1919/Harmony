@@ -23,7 +23,7 @@ if (empty($_POST['id_utilisateur'])){
     exit();
 }
 
-$idUtilisateur = (int) $_POST['id_utilisateur']; //expliquer cette ligne
+$idUtilisateur = (int) $_POST['id_utilisateur'];
 if ($idUtilisateur <= 0){
     $_SESSION['erreurs'] = ["Identifiant utilisateur invalide."];
     header('Location: ' . BASE_URL . '/public/admin/utilisateurs.php');
@@ -31,22 +31,22 @@ if ($idUtilisateur <= 0){
 }
 
 if((int) $_SESSION['id_utilisateur'] === $idUtilisateur){
-    $_SESSION['erreurs'] = ["Vous ne pouvez pas supprimer votre propre compte."];
+    $_SESSION['erreurs'] = ["Vous ne pouvez pas bloquer votre propre compte."];
     header('Location: ' . BASE_URL . '/public/admin/utilisateurs.php');
     exit;
 }
 
 try {
-    $succes = supprimerUtilisateur($pdo, $idUtilisateur);
+    $succes = bloquerUtilisateur($pdo, $idUtilisateur);
 
     if ($succes) {
-        $_SESSION['succes'] = ["L'utilisateur a été supprimer avec succès."];
+        $_SESSION['succes'] = ["L'utilisateur a été bloquer avec succès."];
     } else {
-        $_SESSION['erreurs'] = ["Impossible de supprimer cet utilisateur."];
+        $_SESSION['erreurs'] = ["Impossible de bloquer cet utilisateur."];
     }
 } catch (PDOException $e) {
     error_log("Erreur suppression utilisateur : " . $e->getMessage());
-    $_SESSION['erreurs'] = ["Une erreur est survenue lors de la suppression de l'utilisateur."];
+    $_SESSION['erreurs'] = ["Une erreur est survenue lors du blocage de l'utilisateur."];
 }
 
 header('Location:' . BASE_URL .'/public/admin/utilisateurs.php');

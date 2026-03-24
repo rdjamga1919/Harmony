@@ -7,8 +7,6 @@ $erreurs = $_SESSION['erreurs'] ?? [];
 $valeurs = $_SESSION['valeurs'] ?? ['pseudo' => '', 'email' => ''];
 $succes  = $_SESSION['succes'] ?? null;
 
-
-
 if (empty($_SESSION['token'])) {
     $_SESSION['token'] = bin2hex(random_bytes(32));
 }
@@ -28,14 +26,21 @@ function e(string $value): string {
     <title>S'inscrire sur Harmony</title>
 </head>
 <body>
-<h2>Page d'inscription</h2>
+<?php require_once ROOT . '/source/inclue/header.php'; ?>
 
-<?php if ($succes): ?>
-<!--ici je veux plutot lié la page css dedicacé et uniformiser pour tous-->
-<?php endif; ?>
+<main class="conteneur">
+    <section class="bloc-formulaire">
+        <h1>Créer un compte</h1>
+
+        <?php if ($succes): ?>
+            <div class="message-succes">
+                <p><?= e($succes) ?></p>
+            </div>
+        <?php endif; ?>
+
 
 <?php if (!empty($erreurs)): ?>
-    <div >
+    <div class="message-erreur">
         <p>Veuillez corriger les erreurs suivantes :</p>
         <ul>
             <?php foreach ($erreurs as $msg): ?>
@@ -44,20 +49,22 @@ function e(string $value): string {
         </ul>
     </div>
 <?php endif; ?>
-<form action="../traitement/traitement_inscription.php" method="post"  novalidate>
-    <fieldset>
+<form action="<?= BASE_URL ?>/traitement/traitement_inscription.php" method="post" novalidate>    <fieldset>
         <legend>Inscription</legend>
         <div>
-            <input type="hidden" name="csrf_token" value="<?= $_SESSION['token'] ?>">
+            <input type="hidden" name="csrf_token" value="<?= e($token) ?>">
         </div>
         <div>
             <label for="pseudo">Votre pseudo </label>
-            <input type="text" name="pseudo" id="pseudo" required
+            <input type="text"
+                   name="pseudo"
+                   id="pseudo"
+                   required
                    minlength="5" 
                    value="<?= e($valeurs['pseudo'] ?? '') ?>" 
             > <!--utilisation du html specialchars-->
         <?php if (isset($erreurs['pseudo'])): ?>
-            <p><?= e($erreurs['pseudo']) ?></p>
+            <p class="erreur-champ"><?= e($erreurs['pseudo']) ?></p>
         <?php endif; ?>
         </div>
 
@@ -66,7 +73,7 @@ function e(string $value): string {
             <input type="email" name="email" id="email" required
                    value="<?= e($valeurs['email'] ?? '') ?>">
             <?php if (isset($erreurs['email'])): ?>
-                <p><?= e($erreurs['email']) ?></p>
+                <p class="erreur-champ"><?= e($erreurs['email']) ?></p>
             <?php endif; ?>
         </div>
 
@@ -75,7 +82,7 @@ function e(string $value): string {
             <input type="password" name="password" id="pass" required
                    minlength="6">
             <?php if (isset($erreurs['mdp'])): ?>
-                <p><?= e($erreurs['mdp']) ?></p>
+                <p class="erreur-champ"><?= e($erreurs['mdp']) ?></p>
             <?php endif; ?>
         </div>
         <div>
@@ -83,19 +90,18 @@ function e(string $value): string {
             <input type="password" name="passwordConfirm" id="passConfirm" required
                    minlength="6">
             <?php if (isset($erreurs['passwordConfirm'])): ?>
-                <p><?= e($erreurs['passwordConfirm']) ?></p>
+                <p class="erreur-champ"><?= e($erreurs['passwordConfirm']) ?></p>
             <?php endif; ?>
         </div>
 
         <?php if (isset($erreurs['general'])): ?>
-            <p><?= e($erreurs['general']) ?></p>
+            <p class="erreur-champ"><?= e($erreurs['general']) ?></p>
         <?php endif; ?>
         
         <div>
             <button type="submit" >S'inscrire</button>
             <p class="box-register"> Déja inscrit ?
-            <a href="connexion.php">Connecter-vous ici</a></p>
-        </div>
+                <a href="<?= BASE_URL ?>/public/connexion.php">Connectez-vous ici</a>        </div>
     </fieldset>
 </form>
 </body>

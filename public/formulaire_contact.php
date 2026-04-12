@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire de contact</title>
+    <link rel="stylesheet" href="../ressources/css/formulaire_contact.css">
+</head>
+<body>
+<div class="container mt-5 mb-5">
+    <h1 class="text-center mb-4">Contactez-nous</h1>
+
+    <form class="mx-auto" style="max-width: 600px;">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Envoyer</button>
+    </form>
+</div>
+
+
+</body>
+</html>
+

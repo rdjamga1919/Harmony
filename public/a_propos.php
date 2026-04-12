@@ -1,15 +1,9 @@
 <?php
 
 require_once(__DIR__ . '/../config.php');
-<<<<<<< HEAD
-?>
-=======
-
-
 
 ?>
 
->>>>>>> branch-rosie
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,7 +11,7 @@ require_once(__DIR__ . '/../config.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <<<<<<< HEAD
     <title>À propos — Campus Bien-être</title>
-    <link rel="stylesheet" href="apropos.css">
+    <link rel="stylesheet" href="../ressources/css/apropos.css">
 </head>
 <body>
 <?php include '../source/inclue/header.php'?>
@@ -141,12 +135,3 @@ require_once(__DIR__ . '/../config.php');
 </body>
 </html>
 
-=======
-    <title>Harmony</title>
-
-</head>
-<body>
-<h1>jhgjhvjh</h1>
-</body>
-</html>
->>>>>>> branch-rosie
